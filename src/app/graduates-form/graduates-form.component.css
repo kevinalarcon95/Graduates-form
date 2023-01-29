@@ -1,0 +1,65 @@
+/*
+X-Small devices (portrait phones, less than 576px)
+No media query for `xs` since this is the default in Bootstrap
+
+Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+  .imgUnicauca {
+    width: 100%;
+    margin-left: 10% !important;
+  }
+
+  .title {
+    font-size: 14pt !important;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .imgUnicauca {
+    width: 100%;
+    margin-left: 10% !important;
+  }
+
+  .title {
+    font-size: 16pt !important;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .imgUnicauca {
+    width: 60%;
+    margin-left: 80% !important;
+  }
+
+  .title {
+    font-size: 18pt !important;
+  }
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .imgUnicauca {
+    width: 60%;
+    margin-left: 80% !important;
+  }
+}
+
+.form-select {
+  color: gray;
+}
+
+.form-control:focus,
+.form-select:focus {
+  box-shadow: 0 0 0 0 #495ed4;
+  border: solid #495ed4 1px;
+}
+
+.form-control,
+.form-select,
+span {
+  background-color: #e9ecef;
+  border: none;
+  border-radius: 2%;
+}

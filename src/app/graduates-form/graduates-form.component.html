@@ -1,6 +1,469 @@
-<p>
-    Email <br>
-    <input type="email" [formControl]="emailCtrl">
-</p>
+<form [formGroup]="graduatesForm" (ngSubmit)="dataGraduatesForm()"></form>
+<div class="container px-5">
+  <div class="row m-5 pt-0">
+    <div class="col-lg-4 col-md-3">
+        <img class="imgUnicauca mx-auto d-block" src="../../assets/img/bgUnicauca.png" alt="bgUnicauca"/>
+    </div>
+    <div class="col-lg-8 col-md-9 text-center position-relative">
+      <p class="fs-3 fw-bold position-absolute top-50 start-50 translate-middle title">
+        Sistemas de encuestas
+      </p>
+    </div>
+  </div>
 
-<button type="button" (click)="getEmail($event)">Save</button>
+  <div class="row m-5 text-center mt-4 ">
+    <p class="fs-5">Encuesta graduandos</p>
+    <p class="fs-6">
+      Apreciado Graduando(a) Para la Universidad del Cauca es importante
+      seguirle brindando información sobre servicios y beneficios que tiene
+      usted como egresado, motivo por el cual le solicitamos diligenciar la
+      siguiente encuesta a los estudiantes de PREGRADO Y POSGRADO que se
+      graduarán en ceremonia colectiva o privada para los grados programados
+      para el año 2022 PRÓXIMA FECHA DE GRADO: 16 DE DICIEMBRE DE 2022 El Área
+      de Egresados lo felicita por culminar con éxito su etapa como estudiante,
+      para dar inicio a su nueva vida profesional.
+    </p>
+  </div>
+
+  <form [formGroup]="graduatesForm" (ngSubmit)="dataGraduatesForm()">
+    <div class="row m-4 py-4 border">
+        <p class="fs-5">Información personal</p>
+        <div class="col-4">
+            <div class="mb-1">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Fecha de grado">
+                    <span class="input-group-text" id="inputGroup-sizing-default">
+                        <i class="bi bi-calendar-event"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="mb-1">
+                <select class="form-select mb-3" aria-label="Default select example">
+                    <option selected disabled>Tipo de identificación</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+            </div>
+            <div class="mb-1">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="N° Identificación">
+                    <span class="input-group-text" id="inputGroup-sizing-default">
+                        <i class="bi bi-person-vcard"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="mb-1">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Confirmar N° Identificación">
+                    <span class="input-group-text" id="inputGroup-sizing-default">
+                        <i class="bi bi-person-vcard"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="mb-1">
+                <select class="form-select mb-3" aria-label="Default select example">
+                    <option selected disabled>Lugar de expedición</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+            </div>
+            <div class="mb-1">
+                <select class="form-select mb-3" aria-label="Default select example">
+                    <option selected disabled>Ciudad de nacimiento</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+            </div>
+            <div class="mb-1">
+                <select class="form-select mb-3" aria-label="Default select example">
+                    <option selected disabled>Departamento de nacimiento</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+            </div>
+            <div class="mb-1">
+                <select class="form-select mb-3" aria-label="Default select example">
+                    <option selected disabled>Pais de residencia</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="mb-1">
+                <select class="form-select mb-3" aria-label="Default select example">
+                    <option selected disabled>Departamento de residencia</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+            </div>
+            <div class="mb-1">
+                <select class="form-select mb-3" aria-label="Default select example">
+                    <option selected disabled>Ciudad de residencia</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+            </div>
+            <div class="mb-1 mb-3">
+                <div class="row">
+                    <div class="col-6">
+                        <input type="text col-6" class="form-control"placeholder="¿Tiene hijos?" disabled>
+                    </div>
+                    <div class="col-3 d-flex align-items-center align-self-center">
+                        <div class="form-check form-check-inline col-3">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                            <label class="form-check-label" for="inlineRadio1">Si</label>
+                        </div>
+                    </div>
+                    <div class="col-3 d-flex align-items-center align-self-center">
+                        <div class="form-check form-check-inline col-3">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                            <label class="form-check-label" for="inlineRadio2">No</label>
+                        </div>
+                    </div>
+                </div>             
+            </div>
+            <div class="mb-1">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Número de hijos">
+                    <span class="input-group-text" id="inputGroup-sizing-default">
+                        <i class="bi bi-person-fill-exclamation"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row m-4 py-4 border">
+        <p class="fs-5">Información del graduando</p>
+        <div class="col-4">
+            <div class="mb-1">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Correo personal">
+                    <span class="input-group-text" id="inputGroup-sizing-default">
+                        <i class="bi bi-envelope-fill"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+  
+        <div class="col-4">
+            <div class="mb-1">
+                <select class="form-select mb-3" aria-label="Default select example">
+                    <option selected disabled>Facultad</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+            </div>
+        </div>
+  
+        <div class="col-4">
+            <div class="mb-1">
+                <select class="form-select mb-3" aria-label="Default select example">
+                    <option selected disabled>Programa</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+            </div>
+        </div>
+      </div>
+
+    <div class="row m-4 py-4 border">
+      <p class="fs-5">Información del referido</p>
+      <div class="col-4">
+        <div class="mb-1">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Nombre referido">
+                <span class="input-group-text" id="inputGroup-sizing-default">
+                    <i class="bi bi-pencil-square"></i>
+                </span>
+            </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="mb-1">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Celular referido">
+                <span class="input-group-text" id="inputGroup-sizing-default">
+                    <i class="bi bi-phone"></i>
+                </span>
+            </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="mb-1">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Correo referido">
+                <span class="input-group-text" id="inputGroup-sizing-default">
+                    <i class="bi bi-envelope-fill"></i>
+                </span>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row m-4 py-4 border">
+        <p class="fs-5">Información del docente de su programa que influyo positivamente 
+            en su formación como profesional</p>
+        <div class="col-4">
+            <div class="mb-1 mb-3">
+                <div class="row pe-4">
+                    <div class="col-8">
+                        <input type="text col-6" class="form-control"placeholder="¿Ha trabajado antes?" disabled>
+                    </div>
+                    <div class="col-2 d-flex align-items-center align-self-center">
+                        <div class="form-check form-check-inline col-3">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                            <label class="form-check-label" for="inlineRadio1">Si</label>
+                        </div>
+                    </div>
+                    <div class="col-2 d-flex align-items-center align-self-center">
+                        <div class="form-check form-check-inline col-3">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                            <label class="form-check-label" for="inlineRadio2">No</label>
+                        </div>
+                    </div>
+                </div>             
+            </div>
+            <div class="mb-1">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Empresa">
+                    <span class="input-group-text" id="inputGroup-sizing-default">
+                        <i class="bi bi-building-fill"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="mb-1 mb-3">
+                <div class="row pe-4">
+                    <div class="col-8">
+                        <div class="input-group">
+                            <textarea style="resize:none" class="form-control" aria-label="With textarea" placeholder="¿Actualmente está trabajando?" disabled></textarea>
+                        </div>
+                    </div>
+                    <div class="col-2 d-flex align-items-center align-self-center">
+                        <div class="form-check form-check-inline col-3">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                            <label class="form-check-label" for="inlineRadio1">Si</label>
+                        </div>
+                    </div>
+                    <div class="col-2 d-flex align-items-center align-self-center">
+                        <div class="form-check form-check-inline col-3">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                            <label class="form-check-label" for="inlineRadio2">No</label>
+                        </div>
+                    </div>
+                </div>             
+            </div>
+            <div class="mb-1">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Teléfono lugar de trabajo">
+                    <span class="input-group-text" id="inputGroup-sizing-default">
+                      <i class="bi bi-person-workspace"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="mb-1 mb-3">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Tipo de contrato</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+            <div class="mb-1">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Nombre del jefe">
+                    <span class="input-group-text" id="inputGroup-sizing-default">
+                        <i class="bi bi-pencil-square"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="mb-1 mb-3">
+                <div class="row pe-4">
+                    <div class="col-8">
+                        <textarea style="resize:none" class="form-control" aria-label="With textarea" placeholder="¿Se desempeñó en su área de formación?" disabled></textarea>
+                    </div>
+                    <div class="col-2 d-flex align-items-center align-self-center">
+                        <div class="form-check form-check-inline col-3">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                            <label class="form-check-label" for="inlineRadio1">Si</label>
+                        </div>
+                    </div>
+                    <div class="col-2 d-flex align-items-center align-self-center">
+                        <div class="form-check form-check-inline col-3">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                            <label class="form-check-label" for="inlineRadio2">No</label>
+                        </div>
+                    </div>
+                </div>       
+            </div>
+            <div class="mb-1">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Empresa donde labora">
+                    <span class="input-group-text" id="inputGroup-sizing-default">
+                        <i class="bi bi-building-fill"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="mb-1">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Cargo que desempeña">
+                    <span class="input-group-text" id="inputGroup-sizing-default">
+                        <i class="bi bi-pencil-square"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="mb-1 mb-3">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Sector</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+            <div class="mb-1">
+                <div class="input-group">
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Correo del jefe">
+                    <span class="input-group-text" id="inputGroup-sizing-default">
+                        <i class="bi bi-envelope-fill"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="mb-1 mb-3">
+                <div class="input-group">
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Cargo">
+                    <span class="input-group-text" id="inputGroup-sizing-default">
+                      <i class="bi bi-person-workspace"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="mb-1 mb-3">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Ciudad de trabajo</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+            <div class="mb-1 mb-3">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Rango salarial</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+            <div class="mb-1">
+                <div class="row pe-4">
+                    <div class="col-8">
+                        <textarea style="resize:none; font-size:12px;" class="form-control" aria-label="With textarea" placeholder="¿Se encuentra trabajando en el área de formación?" disabled></textarea>
+                    </div>
+                    <div class="col-2 d-flex align-items-center align-self-center">
+                        <div class="form-check form-check-inline col-3">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                            <label class="form-check-label" for="inlineRadio1">Si</label>
+                        </div>
+                    </div>
+                    <div class="col-2 d-flex align-items-center align-self-center">
+                        <div class="form-check form-check-inline col-3">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                            <label class="form-check-label" for="inlineRadio2">No</label>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+
+    <div class="row m-4 py-4 border">
+        <p class="fs-5">Información del docente de su programa que influyo positivamente 
+            en su formación como profesional</p>
+        <div class="col-4">
+          <div class="mb-1">
+              <div class="input-group mb-3">
+                  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Nombre referido">
+                  <span class="input-group-text" id="inputGroup-sizing-default">
+                    <i class="bi bi-person-workspace"></i>
+                  </span>
+              </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="mb-1">
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Razón influencia</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="mb-1">
+              <div class="input-group mb-3">
+                  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="¿Cual?">
+                  <span class="input-group-text" id="inputGroup-sizing-default">
+                    <i class="bi bi-pencil-square"></i>
+                  </span>
+              </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="row m-4 py-4 border">
+        <p class="fs-5">Información adicional</p>
+        <div class="row mb-4">
+            <h4 style="color: gray;">Comentarios, sugerencias sobre el programa del cual egresa:</h4>
+            <div class="form-floating">
+                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+              </div>
+        </div>
+        <div class="row">
+            <h4 style="color: gray;">Comentarios, sugerencias sobre el programa del cual egresa:</h4>
+            <div class="form-floating">
+                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+              </div>
+        </div>
+    </div>
+
+    <div class="row m-4 p-4 border">
+        <h3>Estimado Graduando </h3>
+          <p class="fs-6">
+            Recuerde que recibirá un correo por parte del Área de Egresados
+            notificando la recepción de la encuesta a graduandos el cual
+            corresponde al <strong>PAZ Y SALVO para grado.</strong><br/><br/>
+            <strong>El correo de confirmación NO es automático</strong>, por lo cual recibirá el
+            correo en las siguientes 24 horas posteriores de haber diligenciado
+            el formulario. <br/><br/>
+            <strong>IMPORTANTE: Las encuestas que se envíen a partir de las 3:00 PM de
+            los días viernes, serán verificadas a partir del día lunes en la
+            mañana, si es festivo, a partir del día martes. <br/><br/>
+            Agradecemos su comprensión.</strong> <br/><br/>
+            Cualquier inquietud puede contactarse con nosotros y con gusto lo
+            atenderemos en horario de lunes a viernes de 8:00 am - 5:00 pm.<br/><br/>
+            Correo: <u style="color: blue;">egresados@unicauca.edu.co</u><br/><br/>
+            ¡GRACIAS POR PARTICIPAR EN ESTE PROCESO, LOS EGRESADOS SON UN PILAR
+            FUNDAMENTAL PARA LA EXCELENCIA INSTITUCIONAL!
+          </p>
+    </div>
+  </form>
+  <div>
+    <button type="submit" class="btn btn-primary btn-sm ms-4 mb-3"><i class="bi bi-send-fill"></i> Enviar</button>
+  </div>
+</div>
+

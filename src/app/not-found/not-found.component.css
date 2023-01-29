@@ -1,0 +1,9 @@
+.background-img404 {
+    background-image: url("../../assets/img/error404.png");
+    width: 40%;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+}

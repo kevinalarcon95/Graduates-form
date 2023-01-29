@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+
+interface Food {
+  value: string;
+  viewValue: string;
+}
 
 @Component({
   selector: 'app-graduates-form',
@@ -8,19 +13,19 @@ import { FormControl } from '@angular/forms';
 })
 export class GraduatesFormComponent implements OnInit {
   
-  emailCtrl = new FormControl('',[]);
+  graduatesForm = new FormGroup({
 
-  constructor(){
-    this.emailCtrl.valueChanges
-    .subscribe(value => {
-      console.log(value);
-    });
-  }
+  });
 
-  ngOnInit(){}
+  constructor(){ }
   
-  getEmail(event: Event) {
-    event.preventDefault();
-    console.log(this.emailCtrl.value);
-  }
+  dataGraduatesForm(){}
+  
+  ngOnInit(): void{}
+
+  foods: Food[] = [
+    {value: 'steak-0', viewValue: 'Steak'},
+    {value: 'pizza-1', viewValue: 'Pizza'},
+    {value: 'tacos-2', viewValue: 'Tacos'},
+  ];
 }
