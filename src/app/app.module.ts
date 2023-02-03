@@ -7,34 +7,21 @@ import { GraduatesFormComponent } from './graduates-form/graduates-form.componen
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {FormsModule} from '@angular/forms';
-
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatSelectModule} from '@angular/material/select';
-import { MatIconModule } from '@angular/material/icon';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GraduatesFormComponent,
-    NotFoundComponent
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatInputModule,
-    MatButtonModule,
     FormsModule,
-    MatCardModule,
-    MatDatepickerModule,
-    MatSelectModule,
-    MatIconModule
-  ],
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
