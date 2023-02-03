@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl, FormArrayName, FormArray } from '@angular/forms';
-import { debounceTime } from 'rxjs';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ServiceService } from '../Service/service.service';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 import { validationNumberIdentification } from '../utils/validations';
+
 
 @Component({
   selector: 'app-graduates-form',
@@ -27,69 +29,46 @@ export class GraduatesFormComponent implements OnInit {
 
   graduatesForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private service: ServiceService, private router: Router) {}
 
   ngOnInit() {
     this.graduatesForm = this.initForm();
     //this.graduatesForm.controls['idType'].setValue('Tipo de identificación')
   }
 
-  //Limpia el formulario
-  onResetForm() {
-    this.graduatesForm.reset();
-  }
-
-  dataGraduatesForm() {
-    // if (!this.graduatesForm.valid) {
+  saveDataGraduatesForm() {
+    if (this.graduatesForm.valid) {
       console.log('Form ->', this.graduatesForm.value);
-    //  this.confirmBox();
-    // } else {
-    //   console.log('No valid');
-    //   this.alert();
-    // }
+      Swal.fire({
+        title: 'Confirmar envio de datos',
+        text:  '¿Estas seguro que deseas enviar el formulario?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Si, confirmar!',
+        cancelButtonText: 'No, cancelar!'
+      }).then((result) => {
+        if (result.value) {
+          this.service.saveGraduatesForm(this.graduatesForm)
+          .subscribe(data => {
+            Swal.fire('¡Formulario enviado exitosamente!', '', 'success');
+            this.router.navigate(['graduates-form']);
+          })
+          this.onResetForm();
+          //aqui se envia los datos al backend
+        }
+      })
+    } else {
+      console.log('No valid');
+      Swal.fire({
+        title: '¡Existen campos por validar!',
+        icon: 'warning',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Aceptar',
+      });
+    }
   }
   
-  /*
-     Metodos que habilitan los input en el formulario
-  */
-   isClicked: boolean = false;
-   element: boolean = false;
-   element2: boolean = false;
-   element3: boolean = false;
-
-   enableInput(){
-     this.element = true;
-     this.isClicked = true;
-     return (this.element = true && this.isClicked);
-   }
- 
-   disableInput(){
-     this.element = false;
-     this.isClicked = true;
-   }
-
-   enableInputTwo(){
-    this.element2 = true;
-    this.isClicked = true;
-    return (this.element2 = true && this.isClicked);
-  }
-
-  disableInputTwo(){
-    this.element2 = false;
-    this.isClicked = true;
-  }
-
-  enableInputThree(){
-    this.element3 = true;
-    this.isClicked = true;
-    return (this.element3 = true && this.isClicked);
-  }
-
-  disableInputThree(){
-    this.element3 = false;
-    this.isClicked = true;
-  }
-
   initForm(): FormGroup {
     return this.formBuilder.group({
       //Informaión personal
@@ -134,27 +113,49 @@ export class GraduatesFormComponent implements OnInit {
     });
   }
   
-  //Alerta simple, comprueba que no hayan campos vacios
-  alert(){
-    Swal.fire('Existen campos por validar!', '', 'warning');
+  //Limpia el formulario
+  onResetForm() {
+    this.graduatesForm.reset();
   }
-  
-  //Alerta de confirmación
-  confirmBox(){
-    Swal.fire({
-      title: 'Confirmar envio de datos',
-      text:  '¿Estas seguro que deseas enviar el formulario?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      confirmButtonText: 'Si, confirmar!',
-      cancelButtonText: 'No, cancelar!'
-    }).then((result) => {
-      if (result.value) {
-        Swal.fire('Formulario enviado exitosamente!', '', 'success');
-        this.onResetForm();
-        //aqui se envia los datos al backend
-      }
-    })
+
+  /*
+     Metodos que habilitan los input en el formulario
+  */
+   isClicked: boolean = false;
+   element: boolean = false;
+   element2: boolean = false;
+   element3: boolean = false;
+
+   enableInput(){
+     this.element = true;
+     this.isClicked = true;
+     return (this.element = true && this.isClicked);
+   }
+ 
+   disableInput(){
+     this.element = false;
+     this.isClicked = true;
+   }
+
+   enableInputTwo(){
+    this.element2 = true;
+    this.isClicked = true;
+    return (this.element2 = true && this.isClicked);
+  }
+
+  disableInputTwo(){
+    this.element2 = false;
+    this.isClicked = true;
+  }
+
+  enableInputThree(){
+    this.element3 = true;
+    this.isClicked = true;
+    return (this.element3 = true && this.isClicked);
+  }
+
+  disableInputThree(){
+    this.element3 = false;
+    this.isClicked = true;
   }
 }

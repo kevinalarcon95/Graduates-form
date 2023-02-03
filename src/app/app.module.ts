@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {FormsModule} from '@angular/forms';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     FormsModule,
+    HttpClientModule,
     ],
   providers: [],
   bootstrap: [AppComponent]
