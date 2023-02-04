@@ -18,8 +18,11 @@ export class GraduatesForm{
       //Información del referido
       refeName: string;
       cellRefe: number;
-      emailRefe: string;      //Información laboral
+      emailRefe: string;      
+      //Información laboral
+      hasWork: string;
       companyWork: string;
+      currentlyWorking: string;
       phoneWork: number;
       typeContract: string;
       bossName: string;
@@ -35,7 +38,7 @@ export class GraduatesForm{
       //Información del docente
       nameRefeDoc: string;
       reasonInfluence: string;
-
+      whatReason: string
       //Información adicional
       commentOne: string;
       commentTwo: string;

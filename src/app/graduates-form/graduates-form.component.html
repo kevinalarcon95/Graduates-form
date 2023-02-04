@@ -287,13 +287,13 @@
                       </div>
                       <div class="col-2 d-flex align-items-center align-self-center">
                           <div class="form-check form-check-inline col-3">
-                              <input class="form-check-input" type="radio" name="inlineRadioOptions" aria-label="radio" value="option1" (click)="enableInputTwo()" />
+                              <input class="form-check-input" formControlName="hasWork" type="radio" aria-label="radio" value="SI" (click)="enableInputTwo()" />
                               <label class="form-check-label" for="inlineRadio1">Si</label>
                           </div>
                       </div>
                       <div class="col-2 d-flex align-items-center align-self-center">
                           <div class="form-check form-check-inline col-3">
-                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" aria-label="radio" value="option2" (click)="disableInputTwo()" checked />
+                              <input class="form-check-input" formControlName="hasWork" type="radio"  id="inlineRadio2" aria-label="radio" value="NO" (click)="disableInputTwo()" checked />
                               <label class="form-check-label" for="inlineRadio2">No</label>
                           </div>
                       </div>
@@ -310,7 +310,7 @@
                       * Campo requerido
                   </div>
               </div>
-              <div class="mb-1 mb-3">
+              <div class="mb-3">
                   <div class="row pe-4">
                       <div class="col-8">
                           <div class="input-group">
@@ -319,21 +319,21 @@
                       </div>
                       <div class="col-2 d-flex align-items-center align-self-center">
                           <div class="form-check form-check-inline col-3">
-                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" />
-                              <label class="form-check-label" for="inlineRadio1">Si</label>
+                              <input class="form-check-input" formControlName="currentlyWorking" type="radio"  id="isWorkRadio1" value="SI" (click)="enableInputThree()" />
+                              <label class="form-check-label" for="isWorkRadio1">Si</label>
                           </div>
                       </div>
                       <div class="col-2 d-flex align-items-center align-self-center">
                           <div class="form-check form-check-inline col-3">
-                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
-                              <label class="form-check-label" for="inlineRadio2">No</label>
+                              <input class="form-check-input" formControlName="currentlyWorking" type="radio" id="isWorkRadio2" value="NO" (click)="disableInputThree()" checked/>
+                              <label class="form-check-label" for="isWorkRadio2">No</label>
                           </div>
                       </div>
                   </div>
               </div>
-              <div class="mb-1">
-                  <div class="input-group mb-3">
-                      <input type="text" class="form-control" formControlName="phoneWork" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required placeholder="Teléfono lugar de trabajo" />
+              <div class="mb-3" *ngIf="element3 == true">
+                  <div class="input-group mb-3" >
+                      <input type="text" class="form-control" formControlName="phoneWork" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Teléfono lugar de trabajo" />
                       <span class="input-group-text" id="inputGroup-sizing-default">
                         <i class="bi bi-person-workspace"></i>
                       </span>
@@ -343,7 +343,7 @@
                   </div>
                   <div *ngIf="graduatesForm.get('phoneWork')?.errors?.pattern" class="alert alert-danger">Solo debe ingresar valores númericos.</div>
               </div>
-              <div class="mb-1 mb-3">
+              <div class="mb-3" *ngIf="element3 == true">
                   <select class="form-select mb-3" formControlName="typeContract" aria-label="Default select example">
                       <option value="" selected hidden>Tipo de contrato</option>
                       <option value="CONTRATO A TÉRMINO FIJO">
@@ -369,9 +369,9 @@
                       * Campo requerido
                   </div>
               </div>
-              <div class="mb-1">
-                  <div class="input-group mb-3">
-                      <input type="text" class="form-control" formControlName="bossName" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required placeholder="Nombre del jefe" />
+              <div class="mb-3" *ngIf="element3 == true">
+                  <div class="input-group">
+                      <input type="text" class="form-control" formControlName="bossName" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Nombre del jefe" />
                       <span class="input-group-text" id="inputGroup-sizing-default">
                         <i class="bi bi-pencil-square"></i>
                       </span>
@@ -381,7 +381,7 @@
                   </div>
               </div>
           </div>
-          <div class="col-4">
+          <div class="col-4" *ngIf="element3 == true">
               <div class="mb-1 mb-3">
                   <div class="row pe-4">
                       <div class="col-8">
@@ -389,13 +389,13 @@
                       </div>
                       <div class="col-2 d-flex align-items-center align-self-center">
                           <div class="form-check form-check-inline col-3">
-                              <input class="form-check-input" type="radio" name="optionArea" formControlName="optionArea" id="inlineRadio1" value="SI" required />
+                              <input class="form-check-input" type="radio" name="optionArea" formControlName="optionArea" id="inlineRadio1" value="SI" />
                               <label class="form-check-label" for="inlineRadio1">Si</label>
                           </div>
                       </div>
                       <div class="col-2 d-flex align-items-center align-self-center">
                           <div class="form-check form-check-inline col-3">
-                              <input class="form-check-input" type="radio" name="optionArea" formControlName="optionArea" id="inlineRadio2" value="NO" required />
+                              <input class="form-check-input" type="radio" name="optionArea" formControlName="optionArea" id="inlineRadio2" value="NO" />
                               <label class="form-check-label" for="inlineRadio2">No</label>
                           </div>
                       </div>
@@ -406,7 +406,7 @@
               </div>
               <div class="mb-1">
                   <div class="input-group mb-3">
-                      <input type="text" class="form-control" formControlName="nameCompanyWork" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required placeholder="Empresa donde labora" />
+                      <input type="text" class="form-control" formControlName="nameCompanyWork" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Empresa donde labora" />
                       <span class="input-group-text" id="inputGroup-sizing-default">
                         <i class="bi bi-building-fill"></i>
                      </span>
@@ -417,7 +417,7 @@
               </div>
               <div class="mb-1">
                   <div class="input-group mb-3">
-                      <input type="text" class="form-control" formControlName="positionCompany" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required placeholder="Cargo que desempeña" />
+                      <input type="text" class="form-control" formControlName="positionCompany" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Cargo que desempeña" />
                       <span class="input-group-text" id="inputGroup-sizing-default">
                         <i class="bi bi-pencil-square"></i>
                       </span>
@@ -427,7 +427,7 @@
                   </div>
               </div>
               <div class="mb-1 mb-3">
-                  <select class="form-select" formControlName="workSector" aria-label="Default select example" required>
+                  <select class="form-select" formControlName="workSector" aria-label="Default select example">
                       <option value="" selected hidden>Sector</option>
                       <option value="PUBLICO">Publico</option>
                       <option value="PRIVADO">Privado</option>
@@ -439,7 +439,7 @@
               </div>
               <div class="mb-1">
                   <div class="input-group mb-3">
-                      <input type="email" class="form-control" formControlName="bossMail" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required placeholder="Correo del jefe" />
+                      <input type="email" class="form-control" formControlName="bossMail" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Correo del jefe" />
                       <span class="input-group-text" id="inputGroup-sizing-default">
                         <i class="bi bi-envelope-fill"></i>
                       </span>
@@ -450,10 +450,10 @@
                   <div *ngIf="graduatesForm.get('bossMail')?.errors?.['email'] && graduatesForm.get('bossMail')?.touched" class="alert alert-danger">* No es un correo</div>
               </div>
           </div>
-          <div class="col-4">
+          <div class="col-4" *ngIf="element3 == true">
               <div class="mb-1 mb-3">
                   <div class="input-group">
-                      <input type="text" class="form-control" formControlName="bossPositionCompany" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required placeholder="Cargo" />
+                      <input type="text" class="form-control" formControlName="bossPositionCompany" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Cargo" />
                       <span class="input-group-text" id="inputGroup-sizing-default">
                         <i class="bi bi-person-workspace"></i>
                       </span>
@@ -558,7 +558,7 @@
           <div class="col-4">
               <div class="mb-1">
                   <div class="input-group mb-3">
-                      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required placeholder="¿Cual?" />
+                      <input type="text" class="form-control" formControlName="whatReason" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required placeholder="¿Cual?" />
                       <span class="input-group-text" id="inputGroup-sizing-default">
                         <i class="bi bi-pencil-square"></i>
                       </span>

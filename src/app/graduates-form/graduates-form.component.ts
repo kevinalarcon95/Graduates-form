@@ -51,8 +51,8 @@ export class GraduatesFormComponent implements OnInit {
   }
 
   saveDataGraduatesForm() {
-    if (this.graduatesForm.valid) {
-      console.log('Form ->', this.graduatesForm.value);
+    // if (this.graduatesForm.valid) {
+      //console.log('Form ->', this.graduatesForm.value);
       // Swal.fire({
       //   title: 'Confirmar envio de datos',
       //   text:  '¿Estas seguro que deseas enviar el formulario?',
@@ -64,6 +64,7 @@ export class GraduatesFormComponent implements OnInit {
       // }).then((result) => {
         // if (result.value) {
           let graduates = this.dataGraduatesForm();
+          console.log('Form ->', graduates);
           this.service.saveGraduatesForm(graduates)
           .subscribe(data => {
             // Swal.fire('¡Formulario enviado exitosamente!', '', 'success');
@@ -74,7 +75,7 @@ export class GraduatesFormComponent implements OnInit {
           //aqui se envia los datos al backend
         // }
       // })
-    } else {
+    // } else {
       console.log('No valid');
       alert("¡Existen campos por validar!");
       // Swal.fire({
@@ -83,7 +84,7 @@ export class GraduatesFormComponent implements OnInit {
       //   confirmButtonColor: '#3085d6',
       //   confirmButtonText: 'Aceptar',
       // });
-    }
+    // }
   }
 
   dataGraduatesForm(): GraduatesForm {
@@ -106,7 +107,9 @@ export class GraduatesFormComponent implements OnInit {
     graduates.refeName = this.graduatesForm.controls.refeName.value;
     graduates.cellRefe = this.graduatesForm.controls.cellRefe.value;
     graduates.emailRefe = this.graduatesForm.controls.emailRefe.value;
+    graduates.hasWork = this.graduatesForm.controls.hasWork.value;
     graduates.companyWork = this.graduatesForm.controls.companyWork.value;
+    graduates.currentlyWorking = this.graduatesForm.controls.currentlyWorking.value;
     graduates.phoneWork = this.graduatesForm.controls.phoneWork.value;
     graduates.typeContract = this.graduatesForm.controls.typeContract.value;
     graduates.bossName = this.graduatesForm.controls.bossName.value;
@@ -121,6 +124,7 @@ export class GraduatesFormComponent implements OnInit {
     graduates.isWork = this.graduatesForm.controls.isWork.value;
     graduates.nameRefeDoc =  this.graduatesForm.controls.nameRefeDoc.value;
     graduates.reasonInfluence = this.graduatesForm.controls.reasonInfluence.value;
+    graduates.whatReason = this.graduatesForm.controls.whatReason.value;
     graduates.commentOne = this.graduatesForm.controls.commentOne.value;
     graduates.commentTwo = this.graduatesForm.controls.commentTwo.value;
 
@@ -150,7 +154,9 @@ export class GraduatesFormComponent implements OnInit {
       cellRefe: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
       emailRefe: ['', [Validators.required, Validators.email]],
       //Información laboral
+      hasWork: ['', [Validators.required]],
       companyWork: ['', [Validators.required]],
+      currentlyWorking: ['', [Validators.required]],
       phoneWork: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
       typeContract: ['', [Validators.required]],
       bossName: ['', [Validators.required]],
@@ -166,6 +172,7 @@ export class GraduatesFormComponent implements OnInit {
       //Información del docente
       nameRefeDoc: ['', [Validators.required]],
       reasonInfluence: ['', [Validators.required]],
+      whatReason: ['', [Validators.required]],
       //Información adicional
       commentOne: ['', [Validators.required]],
       commentTwo: ['', [Validators.required]],
