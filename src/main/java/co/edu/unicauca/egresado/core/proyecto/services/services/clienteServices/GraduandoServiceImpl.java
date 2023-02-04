@@ -56,7 +56,7 @@ public class GraduandoServiceImpl implements IGraduandoService{
 
 	@Override
 	public GraduandoEntity save(GraduandoEntity graduando) {
-		graduando.setCargo(graduando.getCargo());
+		graduando.setBossMail(graduando.getBossMail());
 		return this.servicioAccesoBaseDatos.save(graduando);
 	}
 
