@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FormGroup} from '@angular/forms';
+import { GraduatesForm } from 'src/model/GraduatesForm';
 //imkportar el modelo
 
 @Injectable({
@@ -12,8 +12,8 @@ export class ServiceService {
 
   url="http://localhost:8080/api/v1/service"; //conexion con el backend
   
-  saveGraduatesForm(graduatesForm: FormGroup) {
-    return this.http.post<FormGroup>(this.url, graduatesForm);
+  saveGraduatesForm(graduates: GraduatesForm) {
+    return this.http.post<GraduatesForm>(this.url, graduates);
   }
   
 }

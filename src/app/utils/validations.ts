@@ -1,13 +1,13 @@
-import { AbstractControl } from "@angular/forms";
+import {FormGroup } from "@angular/forms";
 
 export class validationNumberIdentification {
-    static isCorrect(control: AbstractControl){
-        const idNumber = control.get("idNumber");
-        const idNumberConfirm = control.get("idNumberConfirm");
+    static isCorrect(control: FormGroup){
+        const idNumber = Number(control.value.idNumber);
+        const idNumberConfirm = Number(control.value.idNumberConfirm);
         
         if(idNumber !== idNumberConfirm){
-                return {isCorrect: false};
+            control.controls['idNumberConfirm'].setErrors({'Incorrect': true})
         }
-            return null;
+        return null;
     }
 }
