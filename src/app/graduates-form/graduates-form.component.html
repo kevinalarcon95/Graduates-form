@@ -202,9 +202,9 @@
               <div class="mb-1">
                   <select class="form-select mb-3" formControlName="unicaucaFaculty" aria-label="Default select example">
                       <option value="" selected hidden>Facultad</option>
-                      <option *ngFor="let faculty of unicaucaFaculty" [ngValue]="unicaucaFaculty">
-                          {{ faculty.name }}
-                      </option>
+                      <option value="1">FIET</option>
+                      <option value="2">FACA</option>
+                      <option value="3">SALUD</option>
                   </select>
               </div>
               <div *ngIf="graduatesForm.get('unicaucaFaculty')?.errors?.['required'] && graduatesForm.get('unicaucaFaculty')?.touched" class="alert alert-danger">
@@ -465,6 +465,9 @@
               <div class="mb-1 mb-3">
                   <select class="form-select" formControlName="workCity" aria-label="Default select example">
                       <option value="" selected hidden>Ciudad de trabajo</option>
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
                   </select>
               </div>
               <div *ngIf="graduatesForm.get('workCity')?.errors?.['required'] && graduatesForm.get('workCity')?.touched" class="alert alert-danger">

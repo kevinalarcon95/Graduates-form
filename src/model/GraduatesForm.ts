@@ -3,7 +3,7 @@ export class GraduatesForm{
       degreeDate: string;
       idType: string;
       idNumber: number;
-      idNumberConfirm: number;
+      //idNumberConfirm: number;
       expeditionPlace: string;
       placeBirth: string;
       birthDepartament: string;

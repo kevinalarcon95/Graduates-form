@@ -68,16 +68,18 @@ export class GraduatesFormComponent implements OnInit {
           this.service.saveGraduatesForm(graduates)
           .subscribe(data => {
             // Swal.fire('¡Formulario enviado exitosamente!', '', 'success');
+            console.log(data);
             alert("¡Formulario enviado exitosamente!");
             this.router.navigate(['graduates-form']);
           })
-          this.onResetForm();
+          
+          //this.onResetForm();
           //aqui se envia los datos al backend
         // }
       // })
     // } else {
-      console.log('No valid');
-      alert("¡Existen campos por validar!");
+      //console.log('No valid');
+      //alert("¡Existen campos por validar!");
       // Swal.fire({
       //   title: '¡Existen campos por validar!',
       //   icon: 'warning',
@@ -93,7 +95,7 @@ export class GraduatesFormComponent implements OnInit {
     graduates.degreeDate = this.graduatesForm.controls.degreeDate.value;
     graduates.idType = this.graduatesForm.controls.idType.value;
     graduates.idNumber = this.graduatesForm.controls.idNumber.value;
-    graduates.idNumberConfirm = this.graduatesForm.controls.idNumberConfirm.value;
+    //graduates.idNumberConfirm = this.graduatesForm.controls.idNumberConfirm.value;
     graduates.expeditionPlace = this.graduatesForm.controls.expeditionPlace.value;
     graduates.placeBirth = this.graduatesForm.controls.placeBirth.value;
     graduates.birthDepartament = this.graduatesForm.controls.birthDepartament.value;
