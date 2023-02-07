@@ -71,64 +71,75 @@
                       Solo debe ingresar valores númericos.
                   </div>
                   <div *ngIf="graduatesForm.get('idNumberConfirm')?.errors?.['Incorrect'] && !graduatesForm.get('idNumberConfirm')?.errors?.['pattern']" class="alert alert-danger">
-                      Los numeros de identificación no coinciden.
+                      Los números de identificación no coinciden.
                   </div>
                   <!-- {{ graduatesForm.get("idNumberConfirm")?.errors | json }} -->
               </div>
           </div>
           <div class="col-4">
+                <div class="mb-1">
+                    <select class="form-select mb-3" formControlName="expeditionDepartament" aria-label="Default select example" (change)="loadCitiesCol($event)">
+                        <option value="" selected hidden>Departamento de expedición</option>
+                        <option *ngFor="let obj of arrayDepartamentCol" [value]="obj.isoCode" selected>
+                            {{ obj.name }}
+                          </option>
+                    </select>
+                </div>
+                <div *ngIf="graduatesForm.get('expeditionPlace')?.errors?.['required'] && graduatesForm.get('expeditionPlace')?.touched" class="alert alert-danger">
+                * Campo requerido
+                </div>
               <div class="mb-1">
                   <select class="form-select mb-3" formControlName="expeditionPlace" aria-label="Default select example">
-                      <option value="" selected hidden>Lugar de expedición</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
+                      <option value="" selected hidden>Ciudad de expedición</option>
+                      <option *ngFor="let obj of arrayCitiesCol" [value]="obj" selected>
+                        {{ obj }}
+                      </option>
                   </select>
               </div>
-              <div *ngIf="graduatesForm.get('expeditionPlace')?.errors?.['required'] && graduatesForm.get('expeditionPlace')?.touched" class="alert alert-danger">
+              <div *ngIf="graduatesForm.get('expeditionPlace')?.errors?.['required'] && graduatesForm.get('expeditionPlace')?.touched" class="alert alert-danger" >
                 * Campo requerido
               </div>
+            <div class="mb-1">
+                <select class="form-select mb-3" formControlName="birthDepartament" aria-label="Default select example" (change)="loadCitiesCol2($event)">
+                    <option value="" selected hidden>Departamento de nacimiento</option>
+                    <option *ngFor="let obj of arrayDepartamentCol" [value]="obj.isoCode" selected>
+                        {{ obj.name }}
+                      </option>
+                </select>
+            </div>
+            <div *ngIf="graduatesForm.get('birthDepartament')?.errors?.['required'] && graduatesForm.get('birthDepartament')?.touched" class="alert alert-danger">
+              * Campo requerido
+            </div>
               <div class="mb-1">
                   <select class="form-select mb-3" formControlName="placeBirth" aria-label="Default select example">
                       <option value="" selected hidden>Ciudad de nacimiento</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
+                      <option *ngFor="let obj of arrayCitiesCol2" [value]="obj" selected>
+                        {{ obj }}
+                      </option>
                   </select>
               </div>
               <div *ngIf="graduatesForm.get('placeBirth')?.errors?.['required'] && graduatesForm.get('placeBirth')?.touched" class="alert alert-danger">
                 * Campo requerido
               </div>
-              <div class="mb-1">
-                  <select class="form-select mb-3" formControlName="birthDepartament" aria-label="Default select example">
-                      <option value="" selected hidden>Departamento de nacimiento</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
-                  </select>
-              </div>
-              <div *ngIf="graduatesForm.get('birthDepartament')?.errors?.['required'] && graduatesForm.get('birthDepartament')?.touched" class="alert alert-danger">
-                * Campo requerido
-              </div>
-              <div class="mb-1">
-                  <select class="form-select mb-3" formControlName="countryResidence" aria-label="Default select example">
-                      <option value="" selected hidden>Pais de residencia</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
-                  </select>
-              </div>
-              <div *ngIf="graduatesForm.get('countryResidence')?.errors?.['required'] && graduatesForm.get('countryResidence')?.touched" class="alert alert-danger">
-                * Campo requerido
-              </div>
           </div>
           <div class="col-4">
+            <div class="mb-1">
+                <select class="form-select mb-3" formControlName="countryResidence" aria-label="Default select example" (change)="loadDepartament($event)">
+                    <option value="" selected hidden>Pais de residencia</option>
+                    <option *ngFor="let obj of arrayCountries" [value]="obj.isoCode" selected>
+                      {{ obj.name }}
+                  </option>
+                </select>
+            </div>
+            <div *ngIf="graduatesForm.get('countryResidence')?.errors?.['required'] && graduatesForm.get('countryResidence')?.touched" class="alert alert-danger">
+              * Campo requerido
+            </div>
               <div class="mb-1">
-                  <select class="form-select mb-3" formControlName="departamentResidence" aria-label="Default select example">
+                  <select class="form-select mb-3" formControlName="departamentResidence" aria-label="Default select example" (change)="loadCities($event)">
                       <option value="" selected hidden>Departamento de residencia</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
+                      <option *ngFor="let obj of arrayDepartament" [value]="obj.isoCode" selected>
+                        {{ obj.name }}
+                      </option>
                   </select>
               </div>
               <div *ngIf="graduatesForm.get('departamentResidence')?.errors?.['required'] && graduatesForm.get('departamentResidence')?.touched" class="alert alert-danger">
@@ -136,10 +147,10 @@
               </div>
               <div class="mb-1">
                   <select class="form-select mb-3" formControlName="cityResidence" aria-label="Default select example">
-                      <option value="" selected hidden>Ciudad de residencia</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
+                    <option value="" selected hidden>Ciudad de residencia</option>
+                    <option *ngFor="let obj of arrayCities" [value]="obj" selected>
+                        {{ obj }}
+                      </option>
                   </select>
               </div>
               <div *ngIf="graduatesForm.get('cityResidence')?.errors?.['required'] && graduatesForm.get('cityResidence')?.touched" class="alert alert-danger">

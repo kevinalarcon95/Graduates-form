@@ -4,6 +4,7 @@ export class GraduatesForm{
       idType: string;
       idNumber: number;
       //idNumberConfirm: number;
+      expeditionDepartament: string;
       expeditionPlace: string;
       placeBirth: string;
       birthDepartament: string;

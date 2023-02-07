@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ServiceService } from '../service/service.service';
 import { Router } from '@angular/router';
-//import Swal from 'sweetalert2';
+import { Country, State, City }  from 'country-state-city';
+//import 'sweetalert2/src/sweetalert2.scss';
+import Swal from 'sweetalert2'
 
 import { validationNumberIdentification } from '../utils/validations';
 import { GraduatesForm } from 'src/model/GraduatesForm';
@@ -29,73 +31,75 @@ export class GraduatesFormComponent implements OnInit {
   ];
 
   graduatesForm: FormGroup;
+  graduates: GraduatesForm;
+  arrayCountries = [];
+  arrayDepartament = [];
+  arrayDepartamentCol = [];
+  arrayCities = [];
+  arrayCitiesCol = [];
+  arrayCitiesCol2 = [];
+  isClicked: boolean = false;
+  element: boolean = false;
+  element2: boolean = false;
+  element3: boolean = false;
+  
 
   constructor(private formBuilder: FormBuilder, private service: ServiceService, private router: Router) {}
 
   ngOnInit() {
     this.graduatesForm = this.initForm();
-    //this.graduatesForm.controls['idType'].setValue('Tipo de identificación')
-
-    window.onload = function() {
-      var myInput = document.getElementById('idNumberConfirm');
-      myInput.onpaste = function(e) {
-        e.preventDefault();
-        //alert("esta acción está prohibida");
-      }
-      
-      myInput.oncopy = function(e) {
-        e.preventDefault();
-        //alert("esta acción está prohibida");
-      }
-    }
+    this.blockCopyAndPaste()
+    this.loadCountries();
+    this.loadDepartamentCol();
   }
 
   saveDataGraduatesForm() {
-    // if (this.graduatesForm.valid) {
-      //console.log('Form ->', this.graduatesForm.value);
-      // Swal.fire({
-      //   title: 'Confirmar envio de datos',
-      //   text:  '¿Estas seguro que deseas enviar el formulario?',
-      //   icon: 'warning',
-      //   showCancelButton: true,
-      //   confirmButtonColor: '#3085d6',
-      //   confirmButtonText: 'Si, confirmar!',
-      //   cancelButtonText: 'No, cancelar!'
-      // }).then((result) => {
-        // if (result.value) {
-          let graduates = this.dataGraduatesForm();
-          console.log('Form ->', graduates);
-          this.service.saveGraduatesForm(graduates)
+    if (this.graduatesForm.valid) {
+      console.log('Form ->', this.graduatesForm.value);
+      Swal.fire({
+        title: 'Confirmar envio de datos',
+        text:  '¿Estas seguro que deseas enviar el formulario?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Si, confirmar!',
+        cancelButtonText: 'No, cancelar!'
+      }).then((result) => {
+        if (result.value) {
+          this.graduates = this.dataGraduatesForm();
+          console.log('Form ->', this.graduates);
+          this.searchCountryByCode();
+          this.searchDepartamentByCode();
+          this.searchDepartamentByCodeCol();
+          console.log(this.searchDepartamentByCode);
+          this.service.saveGraduatesForm(this.graduates)
           .subscribe(data => {
-            // Swal.fire('¡Formulario enviado exitosamente!', '', 'success');
+            Swal.fire('¡Formulario enviado exitosamente!', '', 'success');
             console.log(data);
-            alert("¡Formulario enviado exitosamente!");
             this.router.navigate(['graduates-form']);
           })
-          
-          //this.onResetForm();
-          //aqui se envia los datos al backend
-        // }
-      // })
-    // } else {
-      //console.log('No valid');
-      //alert("¡Existen campos por validar!");
-      // Swal.fire({
-      //   title: '¡Existen campos por validar!',
-      //   icon: 'warning',
-      //   confirmButtonColor: '#3085d6',
-      //   confirmButtonText: 'Aceptar',
-      // });
-    // }
+          this.onResetForm();
+        }else{
+          Swal.fire('¡Error al enviar el formulario!', '', 'error');
+        }
+      })
+    } else {
+      Swal.fire({
+        title: '¡Existen campos por validar!',
+        icon: 'warning',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Aceptar',
+      });
+    }
   }
 
   dataGraduatesForm(): GraduatesForm {
     let graduates = new GraduatesForm();
-    
     graduates.degreeDate = this.graduatesForm.controls.degreeDate.value;
     graduates.idType = this.graduatesForm.controls.idType.value;
     graduates.idNumber = this.graduatesForm.controls.idNumber.value;
     //graduates.idNumberConfirm = this.graduatesForm.controls.idNumberConfirm.value;
+    graduates.expeditionDepartament = this.graduatesForm.controls.expeditionDepartament.value;
     graduates.expeditionPlace = this.graduatesForm.controls.expeditionPlace.value;
     graduates.placeBirth = this.graduatesForm.controls.placeBirth.value;
     graduates.birthDepartament = this.graduatesForm.controls.birthDepartament.value;
@@ -129,7 +133,6 @@ export class GraduatesFormComponent implements OnInit {
     graduates.whatReason = this.graduatesForm.controls.whatReason.value;
     graduates.commentOne = this.graduatesForm.controls.commentOne.value;
     graduates.commentTwo = this.graduatesForm.controls.commentTwo.value;
-
     return graduates;
   }
   
@@ -140,6 +143,7 @@ export class GraduatesFormComponent implements OnInit {
       idType: ['', [Validators.required]],
       idNumber: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
       idNumberConfirm: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
+      expeditionDepartament: ['', [Validators.required]],
       expeditionPlace: ['', [Validators.required]],
       placeBirth: ['', [Validators.required]],
       birthDepartament: ['', [Validators.required]],
@@ -193,11 +197,7 @@ export class GraduatesFormComponent implements OnInit {
   /*
      Metodos que habilitan los input en el formulario
   */
-   isClicked: boolean = false;
-   element: boolean = false;
-   element2: boolean = false;
-   element3: boolean = false;
-
+ 
    enableInput(){
      this.element = true;
      this.isClicked = true;
@@ -230,4 +230,99 @@ export class GraduatesFormComponent implements OnInit {
     this.element3 = false;
     this.isClicked = true;
   }
+  
+  //Metodo que bloquea las opciones de copia y pegar de un input
+  blockCopyAndPaste(){
+    window.onload = function() {
+      var myInput = document.getElementById('idNumberConfirm');
+      myInput.onpaste = function(e) {
+        e.preventDefault();
+      }
+      
+      myInput.oncopy = function(e) {
+        e.preventDefault();
+      }
+    }
+  }
+
+  loadCountries(){
+    let json = Country.getAllCountries();
+    for(var i=0; i< json.length; i++){
+      let country = { name: json[i].name, isoCode: json[i].isoCode };
+      this.arrayCountries.push(country);
+    }
+  }
+
+  searchCountryByCode(){
+    let pais = Country.getCountryByCode(this.graduates.countryResidence).name;
+    this.graduates.countryResidence = pais;
+    return pais;
+  }
+
+  loadDepartament(event) {
+    this.arrayDepartament = [];
+    let json = State.getStatesOfCountry(this.graduatesForm.controls.countryResidence.value);
+    for(var i=0; i< json.length; i++){
+        let departament = { name: json[i].name, isoCode: json[i].isoCode };
+        this.arrayDepartament.push(departament);
+    }
+  }
+
+  searchDepartamentByCode(){
+    let json =  this.arrayDepartament;
+    for(var i=0; i< json.length; i++){
+      if (json[i].isoCode == this.graduates.departamentResidence) {
+        this.graduates.departamentResidence = json[i].name;
+      }
+    }
+  }
+  
+  loadCities(event) {
+    this.arrayCities = [];
+    let json = City.getCitiesOfState(this.graduatesForm.controls.countryResidence.value, this.graduatesForm.controls.departamentResidence.value);
+    for(var i=0; i< json.length; i++){
+        let cities = json[i].name;
+        this.arrayCities.push(cities);
+    }
+  }
+
+  loadDepartamentCol(){
+    let json = State.getStatesOfCountry('CO');
+    for(var i=0; i< json.length; i++){
+      let departament = { name: json[i].name, isoCode: json[i].isoCode };
+      this.arrayDepartamentCol.push(departament);
+    }
+  }
+
+  searchDepartamentByCodeCol(){
+    let json =  this.arrayDepartamentCol;
+    for(var i=0; i< json.length; i++){
+      if (json[i].isoCode == this.graduates.expeditionDepartament) 
+      {
+        this.graduates.expeditionDepartament = json[i].name;
+      }else if(json[i].isoCode == this.graduates.birthDepartament)
+      {
+        this.graduates.birthDepartament = json[i].name;
+      }
+    }
+  }
+
+  loadCitiesCol(event){
+    this.arrayCitiesCol = [];
+    let json = City.getCitiesOfState("CO", this.graduatesForm.controls.expeditionDepartament.value);
+    for(var i=0; i< json.length; i++){
+        let cities = json[i].name;
+        this.arrayCitiesCol.push(cities);
+    }
+  }
+
+  loadCitiesCol2(event){
+    this.arrayCitiesCol2 = [];
+    let json = City.getCitiesOfState("CO", this.graduatesForm.controls.birthDepartament.value);
+    for(var i=0; i< json.length; i++){
+        let cities = json[i].name;
+        this.arrayCitiesCol2.push(cities);
+    }
+  }
+
 }
