@@ -177,7 +177,7 @@
               </div>
               <div class="mb-1" *ngIf="element == true">
                   <div class="input-group mb-3">
-                      <input id="element" type="text" class="form-control" formControlName="numberChildren" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Número de hijos" value="0" autocomplete="off" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" min="1" max="15" required />
+                      <input id="element" type="text" class="form-control" formControlName="numberChildren" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Número de hijos" autocomplete="off" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" min="1" max="15"/>
                       <span class="input-group-text" id="inputGroup-sizing-default">
                         <i class="bi bi-person-fill-exclamation"></i>
                       </span>
@@ -310,7 +310,7 @@
                       </div>
                   </div>
               </div>
-              <div class="mb-1">
+              <div class="mb-1" *ngIf="element2 == true">
                   <div class="input-group mb-3" *ngIf="element2 == true">
                       <input type="text" class="form-control" formControlName="companyWork" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required placeholder="Empresa" value=""/>
                       <span class="input-group-text" id="inputGroup-sizing-default">
@@ -380,8 +380,8 @@
                       * Campo requerido
                   </div>
               </div>
-              <div class="mb-3" *ngIf="element3 == true">
-                  <div class="input-group">
+              <div class="mb-1" *ngIf="element3 == true">
+                  <div class="input-group mb-3">
                       <input type="text" class="form-control" formControlName="bossName" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Nombre del jefe" />
                       <span class="input-group-text" id="inputGroup-sizing-default">
                         <i class="bi bi-pencil-square"></i>
@@ -410,8 +410,10 @@
                               <label class="form-check-label" for="inlineRadio2">No</label>
                           </div>
                       </div>
-                      <div *ngIf="graduatesForm.get('optionArea')?.errors?.['required'] && graduatesForm.get('optionArea')?.touched" class="alert alert-danger">
-                          * Campo requerido
+                      <div class="row mt-3 mx-1">
+                        <div *ngIf="graduatesForm.get('optionArea')?.errors?.['required'] && graduatesForm.get('optionArea')?.touched" class="alert alert-danger">
+                            * Campo requerido, seleccione una opción.
+                        </div>
                       </div>
                   </div>
               </div>
@@ -428,17 +430,17 @@
               </div>
               <div class="mb-1" *ngIf="element3 == true">
                   <div class="input-group mb-3">
-                      <input type="text" class="form-control" formControlName="positionCompany" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Cargo que desempeña" />
+                      <input type="text" class="form-control" formControlName="bossPositionCompany" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Cargo que desempeña" />
                       <span class="input-group-text" id="inputGroup-sizing-default">
                         <i class="bi bi-pencil-square"></i>
                       </span>
                   </div>
-                  <div *ngIf="graduatesForm.get('positionCompany')?.errors?.['required'] && graduatesForm.get('positionCompany')?.touched" class="alert alert-danger">
+                  <div *ngIf="graduatesForm.get('bossPositionCompany')?.errors?.['required'] && graduatesForm.get('bossPositionCompany')?.touched" class="alert alert-danger">
                       * Campo requerido
                   </div>
               </div>
-              <div class="mb-1 mb-3" *ngIf="element3 == true">
-                  <select class="form-select" formControlName="workSector" aria-label="Default select example">
+              <div class="mb-1" *ngIf="element3 == true">
+                  <select class="form-select mb-3" formControlName="workSector" aria-label="Default select example">
                       <option value="" selected hidden>Sector</option>
                       <option value="PUBLICO">Publico</option>
                       <option value="PRIVADO">Privado</option>
@@ -462,19 +464,19 @@
               </div>
           </div>
           <div class="col-4">
-              <div class="mb-1 mb-3" *ngIf="element2 == true">
-                  <div class="input-group">
-                      <input type="text" class="form-control" formControlName="bossPositionCompany" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Cargo" />
+              <div class="mb-1" *ngIf="element2 == true">
+                  <div class="input-group mb-3">
+                      <input type="text" class="form-control" formControlName="positionCompany" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Cargo" />
                       <span class="input-group-text" id="inputGroup-sizing-default">
                         <i class="bi bi-person-workspace"></i>
                       </span>
                   </div>
-                  <div *ngIf="graduatesForm.get('bossPositionCompany')?.errors?.['required'] && graduatesForm.get('bossPositionCompany')?.touched" class="alert alert-danger">
+                  <div *ngIf="graduatesForm.get('positionCompany')?.errors?.['required'] && graduatesForm.get('positionCompany')?.touched" class="alert alert-danger">
                       * Campo requerido
                   </div>
               </div>
-              <div class="mb-1 mb-3" *ngIf="element3 == true">
-                  <select class="form-select" formControlName="workCity" aria-label="Default select example">
+              <div class="mb-1" *ngIf="element3 == true">
+                  <select class="form-select mb-3" formControlName="workCity" aria-label="Default select example">
                       <option value="" selected hidden>Municipio de trabajo</option>
                       <option value="1">One</option>
                       <option value="2">Two</option>
@@ -485,8 +487,8 @@
                 </div>
               </div>
               
-              <div class="mb-1 mb-3" *ngIf="element3 == true">
-                  <select class="form-select" formControlName="salaryRange" aria-label="Default select example">
+              <div class="mb-1" *ngIf="element3 == true">
+                  <select class="form-select mb-3" formControlName="salaryRange" aria-label="Default select example">
                       <option value="" selected hidden>Rango salarial</option>
                       <option value="$1.000.001 - $2000000">$1.000.001 - $2000000</option>
                       <option value="$2.000.001 - $3.000.000">
@@ -534,6 +536,11 @@
                               <label class="form-check-label" for="inlineRadio2">No</label>
                           </div>
                       </div>
+                      <div class="row mt-3 mx-1">
+                        <div *ngIf="graduatesForm.get('isWork')?.errors?.['required'] && graduatesForm.get('isWork')?.touched" class="alert alert-danger">
+                            * Campo requerido, seleccione una opción.
+                        </div>
+                      </div>
                   </div>
               </div>
           </div>
@@ -560,14 +567,14 @@
           </div>
           <div class="col-4">
               <div class="mb-1">
-                  <select class="form-select mb-3" formControlName="reasonInfluence" aria-label="Default select example">
+                  <select class="form-select mb-3" formControlName="reasonInfluence" aria-label="Default select example" (change)="selectedValue()">
                       <option value="" selected hidden>Razón influencia</option>
                       <option value=" Por sus métodos de enseñanza"> Por sus métodos de enseñanza</option>
                       <option value="Porque me motivo a terminar mi carrera">Porque me motivó a terminar mi carrera</option>
                       <option value="Porque dirigió mi trabajo de grado/tesis/práctica/pasantía">Porque dirigió mi trabajo de grado/tesis/práctica/pasantía</option>
                       <option value="Por su componente humano">Por su componente humano</option>
                       <option value="Por su extenso conocimiento en la asignatura">Por su extenso conocimiento en la asignatura</option>
-                      <option value="Otro?">Otro</option>
+                      <option value="Otro">Otro</option>
                   </select>
               </div>
               <div *ngIf="graduatesForm.get('reasonInfluence')?.errors?.['required'] && graduatesForm.get('reasonInfluence')?.touched" class="alert alert-danger">
@@ -577,12 +584,15 @@
           <div class="col-4">
               <div class="mb-1">
                   <div class="input-group mb-3">
-                      <input type="text" class="form-control" formControlName="whatReason" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required placeholder="¿Cual?" />
+                      <input type="text" class="form-control" formControlName="whatReason" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="¿Cual?" [disabled]="inputState"/>
                       <span class="input-group-text" id="inputGroup-sizing-default">
                         <i class="bi bi-pencil-square"></i>
                       </span>
                   </div>
               </div>
+              <div *ngIf="graduatesForm.get('whatReason')?.errors?.['required'] && graduatesForm.get('whatReason')?.touched" class="alert alert-danger">
+                * Campo requerido
+            </div>
           </div>
       </div>
       <!--fin Información del docente-->

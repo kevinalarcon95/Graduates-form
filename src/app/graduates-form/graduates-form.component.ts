@@ -42,6 +42,7 @@ export class GraduatesFormComponent implements OnInit {
   element: boolean = false;
   element2: boolean = false;
   element3: boolean = false;
+  inputState: boolean = false;
   
 
   constructor(private formBuilder: FormBuilder, private service: ServiceService, private router: Router) {}
@@ -84,6 +85,7 @@ export class GraduatesFormComponent implements OnInit {
         }
       })
     } else {
+      this.graduatesForm.markAllAsTouched();
       Swal.fire({
         title: '¡Información incompleta, por favor revise nuevamente!',
         icon: 'warning',
@@ -150,7 +152,7 @@ export class GraduatesFormComponent implements OnInit {
       countryResidence: ['', [Validators.required]],
       departamentResidence: ['', [Validators.required]],
       cityResidence: ['', [Validators.required]],
-      numberChildren: ['', [Validators.required]],
+      numberChildren: ['0'],
       //Información del graduando
       personalMail: ['', [Validators.required, Validators.email]],
       unicaucaFaculty: ['', [Validators.required]],
@@ -161,24 +163,24 @@ export class GraduatesFormComponent implements OnInit {
       emailRefe: ['', [Validators.required, Validators.email]],
       //Información laboral
       hasWork: ['', [Validators.required]],
-      companyWork: ['', [Validators.required]],
+      companyWork: [''],
       currentlyWorking: ['', [Validators.required]],
       phoneWork: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
       typeContract: ['', [Validators.required]],
       bossName: ['', [Validators.required]],
-      optionArea: ['', [Validators.required]],
+      optionArea: [''],
       nameCompanyWork: ['', [Validators.required]],
-      positionCompany: ['', [Validators.required]],
+      bossPositionCompany: ['', [Validators.required]],
       workSector: ['',Validators.required],
       bossMail:   ['', [Validators.required, Validators.email]],
-      bossPositionCompany: ['', [Validators.required]],
+      positionCompany: ['', [Validators.required]],
       workCity: ['', [Validators.required]],
       salaryRange: ['', [Validators.required]],
       isWork: ['', [Validators.required]],
       //Información del docente
       nameRefeDoc: ['', [Validators.required]],
       reasonInfluence: ['', [Validators.required]],
-      whatReason: ['', [Validators.required]],
+      whatReason: [{value: '', disabled: true}],
       //Información adicional
       commentOne: ['', [Validators.required]],
       commentTwo: ['', [Validators.required]],
@@ -201,6 +203,9 @@ export class GraduatesFormComponent implements OnInit {
    enableInput(){
      this.element = true;
      this.isClicked = true;
+     this.graduatesForm.controls.numberChildren.setValidators([Validators.required]);
+     this.graduatesForm.controls.numberChildren.updateValueAndValidity();
+
      return (this.element = true && this.isClicked);
    }
  
@@ -212,6 +217,13 @@ export class GraduatesFormComponent implements OnInit {
    enableInputTwo(){
     this.element2 = true;
     this.isClicked = true;
+    this.graduatesForm.controls.companyWork.setValidators([Validators.required]);
+    this.graduatesForm.controls.companyWork.updateValueAndValidity();
+    this.graduatesForm.controls.optionArea.setValidators([Validators.required]);
+    this.graduatesForm.controls.optionArea.updateValueAndValidity();
+    this.graduatesForm.controls.positionCompany.setValidators([Validators.required]);
+    this.graduatesForm.controls.positionCompany.updateValueAndValidity();
+
     return (this.element2 = true && this.isClicked);
   }
 
@@ -322,6 +334,17 @@ export class GraduatesFormComponent implements OnInit {
     for(var i=0; i< json.length; i++){
         let cities = json[i].name;
         this.arrayCitiesCol2.push(cities);
+    }
+  }
+
+  selectedValue(){
+    if(this.graduatesForm.controls.reasonInfluence.value  === 'Otro'){
+      this.graduatesForm.controls.whatReason.enable();
+      this.graduatesForm.controls.whatReason.setValidators([Validators.required]);
+      this.graduatesForm.controls.whatReason.updateValueAndValidity();
+    }else{
+      this.graduatesForm.controls.whatReason.setValue("");
+      this.graduatesForm.controls.whatReason.disable();
     }
   }
 
