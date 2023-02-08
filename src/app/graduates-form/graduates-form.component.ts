@@ -85,7 +85,7 @@ export class GraduatesFormComponent implements OnInit {
       })
     } else {
       Swal.fire({
-        title: '¡Existen campos por validar!',
+        title: '¡Información incompleta, por favor revise nuevamente!',
         icon: 'warning',
         confirmButtonColor: '#3085d6',
         confirmButtonText: 'Aceptar',

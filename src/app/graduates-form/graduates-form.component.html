@@ -5,13 +5,13 @@
       </div>
       <div class="col-lg-8 col-md-9 text-center position-relative">
           <p class="fs-3 fw-bold position-absolute top-50 start-50 translate-middle title">
-              Sistemas de encuestas
+              Sistemas de Encuestas
           </p>
       </div>
   </div>
 
   <div class="row m-5 text-center mt-4">
-      <p class="fs-5">Encuesta graduandos</p>
+      <p class="fs-5">Encuesta Graduandos - Egresados</p>
       <p class="fs-6">
           Apreciado Graduando(a) Para la Universidad del Cauca es importante seguirle brindando información sobre servicios y beneficios que tiene usted como egresado, motivo por el cual le solicitamos diligenciar la siguiente encuesta a los estudiantes de PREGRADO
           Y POSGRADO que se graduarán en ceremonia colectiva o privada para los grados programados para el año 2022 PRÓXIMA FECHA DE GRADO: 16 DE DICIEMBRE DE 2022 El Área de Egresados lo felicita por culminar con éxito su etapa como estudiante, para
@@ -26,7 +26,7 @@
           <div class="col-4">
               <div class="mb-1">
                   <div class="input-group mb-3">
-                      <input type="date" class="form-control" formControlName="degreeDate" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required placeholder="Fecha de grado" />
+                      <input type="date" class="form-control" formControlName="degreeDate" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required title="Fecha de grado" />
                   </div>
                   <div *ngIf="graduatesForm.get('degreeDate')?.errors?.['required'] && graduatesForm.get('degreeDate')?.touched" class="alert alert-danger">
                       * Campo requerido
@@ -45,7 +45,7 @@
               </div>
               <div class="mb-1">
                   <div class="input-group mb-3">
-                      <input type="text" class="form-control" formControlName="idNumber" id="idNumber" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="N° Identificación" required />
+                      <input type="text" class="form-control" formControlName="idNumber" id="idNumber" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="N° Identificación" autocomplete="off" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" min="1" max="15"/>
                       <span class="input-group-text" id="inputGroup-sizing-default">
                         <i class="bi bi-person-vcard"></i>
                       </span>
@@ -59,7 +59,7 @@
               </div>
               <div class="mb-1">
                   <div class="input-group mb-3">
-                      <input type="text" class="form-control" formControlName="idNumberConfirm" id="idNumberConfirm" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required placeholder="Confirmar N° Identificación" />
+                      <input type="text" class="form-control" formControlName="idNumberConfirm" id="idNumberConfirm" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required placeholder="Confirmar N° Identificación" autocomplete="off" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" min="1" max="15"/>
                       <span class="input-group-text" id="inputGroup-sizing-default">
             <i class="bi bi-person-vcard"></i>
           </span>
@@ -90,7 +90,7 @@
                 </div>
               <div class="mb-1">
                   <select class="form-select mb-3" formControlName="expeditionPlace" aria-label="Default select example">
-                      <option value="" selected hidden>Ciudad de expedición</option>
+                      <option value="" selected hidden>Municipio de expedición</option>
                       <option *ngFor="let obj of arrayCitiesCol" [value]="obj" selected>
                         {{ obj }}
                       </option>
@@ -112,7 +112,7 @@
             </div>
               <div class="mb-1">
                   <select class="form-select mb-3" formControlName="placeBirth" aria-label="Default select example">
-                      <option value="" selected hidden>Ciudad de nacimiento</option>
+                      <option value="" selected hidden>Municipio de nacimiento</option>
                       <option *ngFor="let obj of arrayCitiesCol2" [value]="obj" selected>
                         {{ obj }}
                       </option>
@@ -147,7 +147,7 @@
               </div>
               <div class="mb-1">
                   <select class="form-select mb-3" formControlName="cityResidence" aria-label="Default select example">
-                    <option value="" selected hidden>Ciudad de residencia</option>
+                    <option value="" selected hidden>Municipio de residencia</option>
                     <option *ngFor="let obj of arrayCities" [value]="obj" selected>
                         {{ obj }}
                       </option>
@@ -177,7 +177,7 @@
               </div>
               <div class="mb-1" *ngIf="element == true">
                   <div class="input-group mb-3">
-                      <input id="element" type="text" class="form-control" formControlName="numberChildren" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Número de hijos" value="0" required />
+                      <input id="element" type="text" class="form-control" formControlName="numberChildren" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Número de hijos" value="0" autocomplete="off" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" min="1" max="15" required />
                       <span class="input-group-text" id="inputGroup-sizing-default">
                         <i class="bi bi-person-fill-exclamation"></i>
                       </span>
@@ -257,7 +257,7 @@
           <div class="col-4">
               <div class="mb-1">
                   <div class="input-group mb-3">
-                      <input type="text" class="form-control" formControlName="cellRefe" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required placeholder="Celular referido" />
+                      <input type="text" class="form-control" formControlName="cellRefe" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required placeholder="Celular referido" autocomplete="off" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" min="1" max="10" />
                       <span class="input-group-text" id="inputGroup-sizing-default">
                         <i class="bi bi-phone"></i>
                       </span>
@@ -312,7 +312,7 @@
               </div>
               <div class="mb-1">
                   <div class="input-group mb-3" *ngIf="element2 == true">
-                      <input type="text" class="form-control" formControlName="companyWork" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required placeholder="Empresa" />
+                      <input type="text" class="form-control" formControlName="companyWork" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required placeholder="Empresa" value=""/>
                       <span class="input-group-text" id="inputGroup-sizing-default">
                         <i class="bi bi-building-fill"></i>
                       </span>
@@ -344,7 +344,7 @@
               </div>
               <div class="mb-3" *ngIf="element3 == true">
                   <div class="input-group mb-3" >
-                      <input type="text" class="form-control" formControlName="phoneWork" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Teléfono lugar de trabajo" />
+                      <input type="text" class="form-control" formControlName="phoneWork" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Teléfono lugar de trabajo" autocomplete="off" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)" min="1" max="10" />
                       <span class="input-group-text" id="inputGroup-sizing-default">
                         <i class="bi bi-person-workspace"></i>
                       </span>
@@ -392,11 +392,11 @@
                   </div>
               </div>
           </div>
-          <div class="col-4" *ngIf="element3 == true">
-              <div class="mb-1 mb-3">
+          <div class="col-4">
+              <div class="mb-1 mb-3" *ngIf="element2 == true">
                   <div class="row pe-4">
                       <div class="col-8">
-                          <textarea style="resize: none" class="form-control" aria-label="With textarea" placeholder="¿Se desempeñó en su área de formación?" disabled></textarea>
+                          <textarea style="resize: none" class="form-control" aria-label="With textarea" row="6" placeholder="¿Se desempeñó en su área de formación?" disabled></textarea>
                       </div>
                       <div class="col-2 d-flex align-items-center align-self-center">
                           <div class="form-check form-check-inline col-3">
@@ -415,7 +415,7 @@
                       </div>
                   </div>
               </div>
-              <div class="mb-1">
+              <div class="mb-1" *ngIf="element3 == true">
                   <div class="input-group mb-3">
                       <input type="text" class="form-control" formControlName="nameCompanyWork" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Empresa donde labora" />
                       <span class="input-group-text" id="inputGroup-sizing-default">
@@ -426,7 +426,7 @@
                       * Campo requerido
                   </div>
               </div>
-              <div class="mb-1">
+              <div class="mb-1" *ngIf="element3 == true">
                   <div class="input-group mb-3">
                       <input type="text" class="form-control" formControlName="positionCompany" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Cargo que desempeña" />
                       <span class="input-group-text" id="inputGroup-sizing-default">
@@ -437,18 +437,18 @@
                       * Campo requerido
                   </div>
               </div>
-              <div class="mb-1 mb-3">
+              <div class="mb-1 mb-3" *ngIf="element3 == true">
                   <select class="form-select" formControlName="workSector" aria-label="Default select example">
                       <option value="" selected hidden>Sector</option>
                       <option value="PUBLICO">Publico</option>
                       <option value="PRIVADO">Privado</option>
                       <option value="MIXTO">Mixto</option>
                   </select>
+                  <div *ngIf="graduatesForm.get('workSector')?.errors?.['required'] && graduatesForm.get('workSector')?.touched" class="alert alert-danger">
+                    * Campo requerido
+                </div>
               </div>
-              <div *ngIf="graduatesForm.get('workSector')?.errors?.['required'] && graduatesForm.get('workSector')?.touched" class="alert alert-danger">
-                  * Campo requerido
-              </div>
-              <div class="mb-1">
+              <div class="mb-1" *ngIf="element3 == true">
                   <div class="input-group mb-3">
                       <input type="email" class="form-control" formControlName="bossMail" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Correo del jefe" />
                       <span class="input-group-text" id="inputGroup-sizing-default">
@@ -461,8 +461,8 @@
                   <div *ngIf="graduatesForm.get('bossMail')?.errors?.['email'] && graduatesForm.get('bossMail')?.touched" class="alert alert-danger">* No es un correo</div>
               </div>
           </div>
-          <div class="col-4" *ngIf="element3 == true">
-              <div class="mb-1 mb-3">
+          <div class="col-4">
+              <div class="mb-1 mb-3" *ngIf="element2 == true">
                   <div class="input-group">
                       <input type="text" class="form-control" formControlName="bossPositionCompany" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Cargo" />
                       <span class="input-group-text" id="inputGroup-sizing-default">
@@ -473,18 +473,19 @@
                       * Campo requerido
                   </div>
               </div>
-              <div class="mb-1 mb-3">
+              <div class="mb-1 mb-3" *ngIf="element3 == true">
                   <select class="form-select" formControlName="workCity" aria-label="Default select example">
-                      <option value="" selected hidden>Ciudad de trabajo</option>
+                      <option value="" selected hidden>Municipio de trabajo</option>
                       <option value="1">One</option>
                       <option value="2">Two</option>
                       <option value="3">Three</option>
                   </select>
+                  <div *ngIf="graduatesForm.get('workCity')?.errors?.['required'] && graduatesForm.get('workCity')?.touched" class="alert alert-danger">
+                    * Campo requerido
+                </div>
               </div>
-              <div *ngIf="graduatesForm.get('workCity')?.errors?.['required'] && graduatesForm.get('workCity')?.touched" class="alert alert-danger">
-                  * Campo requerido
-              </div>
-              <div class="mb-1 mb-3">
+              
+              <div class="mb-1 mb-3" *ngIf="element3 == true">
                   <select class="form-select" formControlName="salaryRange" aria-label="Default select example">
                       <option value="" selected hidden>Rango salarial</option>
                       <option value="$1.000.001 - $2000000">$1.000.001 - $2000000</option>
@@ -511,11 +512,12 @@
                       </option>
                       <option value="más de $15.000.001">más de $15.000.001</option>
                   </select>
+                  <div *ngIf="graduatesForm.get('salaryRange')?.errors?.['required'] && graduatesForm.get('salaryRange')?.touched" class="alert alert-danger">
+                    * Campo requerido
+                </div>
               </div>
-              <div *ngIf="graduatesForm.get('salaryRange')?.errors?.['required'] && graduatesForm.get('salaryRange')?.touched" class="alert alert-danger">
-                  * Campo requerido
-              </div>
-              <div class="mb-1">
+              
+              <div class="mb-1" *ngIf="element3 == true">
                   <div class="row pe-4">
                       <div class="col-8">
                           <textarea style="resize: none; font-size: 12px" class="form-control" aria-label="With textarea" placeholder="¿Se encuentra trabajando en el área de formación?" disabled></textarea>
@@ -546,7 +548,7 @@
           <div class="col-4">
               <div class="mb-1">
                   <div class="input-group mb-3">
-                      <input type="text" class="form-control" formControlName="nameRefeDoc" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required placeholder="Nombre referido" />
+                      <input type="text" class="form-control" formControlName="nameRefeDoc" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required placeholder="Nombre docente" />
                       <span class="input-group-text" id="inputGroup-sizing-default">
                         <i class="bi bi-person-workspace"></i>
                       </span>
@@ -560,9 +562,12 @@
               <div class="mb-1">
                   <select class="form-select mb-3" formControlName="reasonInfluence" aria-label="Default select example">
                       <option value="" selected hidden>Razón influencia</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
+                      <option value=" Por sus métodos de enseñanza"> Por sus métodos de enseñanza</option>
+                      <option value="Porque me motivo a terminar mi carrera">Porque me motivó a terminar mi carrera</option>
+                      <option value="Porque dirigió mi trabajo de grado/tesis/práctica/pasantía">Porque dirigió mi trabajo de grado/tesis/práctica/pasantía</option>
+                      <option value="Por su componente humano">Por su componente humano</option>
+                      <option value="Por su extenso conocimiento en la asignatura">Por su extenso conocimiento en la asignatura</option>
+                      <option value="Otro?">Otro</option>
                   </select>
               </div>
               <div *ngIf="graduatesForm.get('reasonInfluence')?.errors?.['required'] && graduatesForm.get('reasonInfluence')?.touched" class="alert alert-danger">
