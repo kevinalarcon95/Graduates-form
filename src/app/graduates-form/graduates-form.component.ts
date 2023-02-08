@@ -230,6 +230,12 @@ export class GraduatesFormComponent implements OnInit {
   disableInputTwo(){
     this.element2 = false;
     this.isClicked = true;
+    this.graduatesForm.controls.companyWork.clearValidators();
+    this.graduatesForm.controls.companyWork.updateValueAndValidity();
+    this.graduatesForm.controls.optionArea.clearValidators();
+    this.graduatesForm.controls.optionArea.updateValueAndValidity();
+    this.graduatesForm.controls.positionCompany.clearValidators();
+    this.graduatesForm.controls.positionCompany.updateValueAndValidity();
   }
 
   enableInputThree(){
