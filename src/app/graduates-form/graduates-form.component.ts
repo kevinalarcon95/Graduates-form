@@ -111,6 +111,9 @@ export class GraduatesFormComponent implements OnInit {
     graduatesFormData.institutionalEmail = this.graduatesForm.controls.personalMail.value;
     program.code = this.graduatesForm.controls.unicaucaProgram.value;
     program.name = "INGENIERIA EN SISTEMAS" //traer el dato desde el back enviandole el id;
+
+    
+    
     job.hadJobBefore = this.graduatesForm.controls.hasWork.value;//¿Ha trabajado antes?
     job.hasBeenInProfession = this.graduatesForm.controls.optionArea.value;//¿Se desempeñó en su área de formación?
     job.working = this.graduatesForm.controls.currentlyWorking.value;//"¿Actualmente está trabajando?
@@ -127,29 +130,38 @@ export class GraduatesFormComponent implements OnInit {
     job.phone.number = this.graduatesForm.controls.phoneWork.value;
     job.sector = this.graduatesForm.controls.workSector.value;
     job.inProfession = this.graduatesForm.controls.isWork.value;//¿Se encuentra trabajando en el área de formación?
+
+    graduatesFormData.job.push(job);
+
     location.residenceCountry = this.graduatesForm.controls.countryResidence.value; //pais de residencia
     location.residenceDepartment = this.graduatesForm.controls.departamentResidence.value;//departamento de residencia
     location.residenceCity = this.graduatesForm.controls.cityResidence.value; // ciudad de residencia
     location.natalDepartment = this.graduatesForm.controls.birthDepartament.value; // departamento de nacimiento
     location.natalDepartment = this.graduatesForm.controls.placeBirth.value; // ciudad de nacimiento
+
+    graduatesFormData.location = location;
+    
     refered.name = this.graduatesForm.controls.refeName.value;
     refered.email = this.graduatesForm.controls.emailRefe.value;
     refered.phone.type = "Celular";
     refered.phone.number = this.graduatesForm.controls.cellRefe.value;
+
+    graduatesFormData.refered = refered;
+    
     aditionalInformation.programComment = this.graduatesForm.controls.commentOne.value;
     aditionalInformation.mostImportantProfessor = this.graduatesForm.controls.nameRefeDoc.value;
     aditionalInformation.mostImportantReassons = this.graduatesForm.controls.reasonInfluence.value;
     aditionalInformation.observations = this.graduatesForm.controls.whatReason.value;
     aditionalInformation.universityExpectative = this.graduatesForm.controls.commentTwo.value;
+
+    graduatesFormData.aditionalInformation = aditionalInformation;
+    
     graduatesFormData.idexpeditionCountry = this.graduatesForm.controls.expeditionDepartament.value;
     graduatesFormData.idexpeditionLocation = this.graduatesForm.controls.expeditionPlace.value;
     graduatesFormData.idtype = this.graduatesForm.controls.idType.value;
 
     graduatesFormData.programs.push(program);
-    graduatesFormData.job.push(job);
-    graduatesFormData.location = location;
-    graduatesFormData.refered = refered;
-    graduatesFormData.aditionalInformation = aditionalInformation;
+  
 
     //graduates.degreeDate = this.graduatesForm.controls.degreeDate.value;    
     return graduatesFormData;
