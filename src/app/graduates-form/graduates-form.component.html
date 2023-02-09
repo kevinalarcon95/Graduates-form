@@ -11,10 +11,10 @@
   </div>
 
   <div class="row m-5 text-center mt-4">
-      <p class="fs-5">Encuesta Graduandos - Egresados</p>
+      <p class="fs-5">Encuesta Graduandos - Egresados {{year}}</p>
       <p class="fs-6">
           Apreciado Graduando(a) Para la Universidad del Cauca es importante seguirle brindando información sobre servicios y beneficios que tiene usted como egresado, motivo por el cual le solicitamos diligenciar la siguiente encuesta a los estudiantes de PREGRADO
-          Y POSGRADO que se graduarán en ceremonia colectiva o privada para los grados programados para el año 2022 PRÓXIMA FECHA DE GRADO: 16 DE DICIEMBRE DE 2022 El Área de Egresados lo felicita por culminar con éxito su etapa como estudiante, para
+          Y POSGRADO que se graduarán en ceremonia colectiva o privada para los grados programados para el año {{year}}. El Área de Egresados lo felicita por culminar con éxito su etapa como estudiante, para
           dar inicio a su nueva vida profesional.
       </p>
   </div>
@@ -312,7 +312,7 @@
               </div>
               <div class="mb-1" *ngIf="element2 == true">
                   <div class="input-group mb-3" *ngIf="element2 == true">
-                      <input type="text" class="form-control" formControlName="companyWork" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required placeholder="Empresa" value=""/>
+                      <input type="text" class="form-control" formControlName="companyWork" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Empresa" value=""/>
                       <span class="input-group-text" id="inputGroup-sizing-default">
                         <i class="bi bi-building-fill"></i>
                       </span>
@@ -476,12 +476,12 @@
                   </div>
               </div>
               <div class="mb-1" *ngIf="element3 == true">
-                  <select class="form-select mb-3" formControlName="workCity" aria-label="Default select example">
-                      <option value="" selected hidden>Municipio de trabajo</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
-                  </select>
+                  <div class="input-group mb-3">
+                      <input type="text" class="form-control" formControlName="workCity" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Municipio de trabajo" />
+                      <span class="input-group-text" id="inputGroup-sizing-default">
+                        <i class="bi bi-person-workspace"></i>
+                      </span>
+                  </div>
                   <div *ngIf="graduatesForm.get('workCity')?.errors?.['required'] && graduatesForm.get('workCity')?.touched" class="alert alert-danger">
                     * Campo requerido
                 </div>

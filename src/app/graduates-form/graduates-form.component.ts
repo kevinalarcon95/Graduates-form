@@ -22,14 +22,6 @@ export class GraduatesFormComponent implements OnInit {
     { value: 'PASAPORTE', name: 'PASAPORTE' },
   ];
 
-  unicaucaFaculty = [
-    { value: 'Facultad de Artes', name: 'Facultad de Artes' },
-    {
-      value: 'Facultad de Ciencias Agrarias',
-      name: 'Facultad de Ciencias Agrarias',
-    },
-  ];
-
   graduatesForm: FormGroup;
   graduates: GraduatesForm;
   arrayCountries = [];
@@ -43,6 +35,8 @@ export class GraduatesFormComponent implements OnInit {
   element2: boolean = false;
   element3: boolean = false;
   inputState: boolean = false;
+  today = new Date();
+  year = this.today.getFullYear();
   
 
   constructor(private formBuilder: FormBuilder, private service: ServiceService, private router: Router) {}
@@ -52,6 +46,7 @@ export class GraduatesFormComponent implements OnInit {
     this.blockCopyAndPaste()
     this.loadCountries();
     this.loadDepartamentCol();
+    console.log(this.year);
   }
 
   saveDataGraduatesForm() {
@@ -60,7 +55,7 @@ export class GraduatesFormComponent implements OnInit {
       Swal.fire({
         title: 'Confirmar envio de datos',
         text:  '¿Estas seguro que deseas enviar el formulario?',
-        icon: 'warning',
+        icon: 'question',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         confirmButtonText: 'Si, confirmar!',
@@ -68,20 +63,22 @@ export class GraduatesFormComponent implements OnInit {
       }).then((result) => {
         if (result.value) {
           this.graduates = this.dataGraduatesForm();
-          console.log('Form ->', this.graduates);
           this.searchCountryByCode();
           this.searchDepartamentByCode();
           this.searchDepartamentByCodeCol();
-          console.log(this.searchDepartamentByCode);
           this.service.saveGraduatesForm(this.graduates)
           .subscribe(data => {
             Swal.fire('¡Formulario enviado exitosamente!', '', 'success');
-            console.log(data);
             this.router.navigate(['graduates-form']);
           })
           this.onResetForm();
         }else{
-          Swal.fire('¡Error al enviar el formulario!', '', 'error');
+          Swal.fire({
+            title:'¡Error al enviar el formulario!',
+            icon: 'error',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Aceptar',
+          });
         }
       })
     } else {
@@ -140,7 +137,7 @@ export class GraduatesFormComponent implements OnInit {
   
   initForm(): FormGroup {
     return this.formBuilder.group({
-      //Informaión personal
+      //Información personal
       degreeDate: ['', [Validators.required]],
       idType: ['', [Validators.required]],
       idNumber: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
@@ -162,21 +159,21 @@ export class GraduatesFormComponent implements OnInit {
       cellRefe: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
       emailRefe: ['', [Validators.required, Validators.email]],
       //Información laboral
-      hasWork: ['', [Validators.required]],
+      hasWork: [''],
       companyWork: [''],
-      currentlyWorking: ['', [Validators.required]],
-      phoneWork: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
-      typeContract: ['', [Validators.required]],
-      bossName: ['', [Validators.required]],
+      currentlyWorking: [''],
+      phoneWork: [''],
+      typeContract: [''],
+      bossName: [''],
       optionArea: [''],
-      nameCompanyWork: ['', [Validators.required]],
-      bossPositionCompany: ['', [Validators.required]],
-      workSector: ['',Validators.required],
-      bossMail:   ['', [Validators.required, Validators.email]],
-      positionCompany: ['', [Validators.required]],
-      workCity: ['', [Validators.required]],
-      salaryRange: ['', [Validators.required]],
-      isWork: ['', [Validators.required]],
+      nameCompanyWork: [''],
+      bossPositionCompany: [''],
+      workSector: [''],
+      bossMail:   [''],
+      positionCompany: [''],
+      workCity: [''],
+      salaryRange: [''],
+      isWork: [''],
       //Información del docente
       nameRefeDoc: ['', [Validators.required]],
       reasonInfluence: ['', [Validators.required]],
@@ -193,7 +190,7 @@ export class GraduatesFormComponent implements OnInit {
   
   //Limpia el formulario
   onResetForm() {
-    this.graduatesForm.reset();
+    //this.graduatesForm.reset();
   }
 
   /*
@@ -212,6 +209,8 @@ export class GraduatesFormComponent implements OnInit {
    disableInput(){
      this.element = false;
      this.isClicked = true;
+     this.graduatesForm.controls.numberChildren.clearValidators();
+     this.graduatesForm.controls.numberChildren.updateValueAndValidity();
    }
 
    enableInputTwo(){
@@ -241,12 +240,52 @@ export class GraduatesFormComponent implements OnInit {
   enableInputThree(){
     this.element3 = true;
     this.isClicked = true;
+    this.graduatesForm.controls.phoneWork.setValidators([Validators.required,Validators.pattern("^[0-9]*$")]);
+    this.graduatesForm.controls.phoneWork.updateValueAndValidity();
+    this.graduatesForm.controls.typeContract.setValidators([Validators.required]);
+    this.graduatesForm.controls.typeContract.updateValueAndValidity();
+    this.graduatesForm.controls.bossName.setValidators([Validators.required]);
+    this.graduatesForm.controls.bossName.updateValueAndValidity();
+    this.graduatesForm.controls.nameCompanyWork.setValidators([Validators.required]);
+    this.graduatesForm.controls.nameCompanyWork.updateValueAndValidity();
+    this.graduatesForm.controls.bossPositionCompany.setValidators([Validators.required]);
+    this.graduatesForm.controls.bossPositionCompany.updateValueAndValidity();
+    this.graduatesForm.controls.workSector.setValidators([Validators.required]);
+    this.graduatesForm.controls.workSector.updateValueAndValidity();
+    this.graduatesForm.controls.bossMail.setValidators([Validators.required,Validators.email]);
+    this.graduatesForm.controls.bossMail.updateValueAndValidity();
+    this.graduatesForm.controls.workCity.setValidators([Validators.required]);
+    this.graduatesForm.controls.workCity.updateValueAndValidity();
+    this.graduatesForm.controls.salaryRange.setValidators([Validators.required]);
+    this.graduatesForm.controls.salaryRange.updateValueAndValidity();
+    this.graduatesForm.controls.isWork.setValidators([Validators.required]);
+    this.graduatesForm.controls.isWork.updateValueAndValidity();
     return (this.element3 = true && this.isClicked);
   }
 
   disableInputThree(){
     this.element3 = false;
     this.isClicked = true;
+    this.graduatesForm.controls.phoneWork.clearValidators();
+    this.graduatesForm.controls.phoneWork.updateValueAndValidity();
+    this.graduatesForm.controls.typeContract.clearValidators();
+    this.graduatesForm.controls.typeContract.updateValueAndValidity();
+    this.graduatesForm.controls.bossName.clearValidators();
+    this.graduatesForm.controls.bossName.updateValueAndValidity();
+    this.graduatesForm.controls.nameCompanyWork.clearValidators();
+    this.graduatesForm.controls.nameCompanyWork.updateValueAndValidity();
+    this.graduatesForm.controls.bossPositionCompany.clearValidators();
+    this.graduatesForm.controls.bossPositionCompany.updateValueAndValidity();
+    this.graduatesForm.controls.workSector.clearValidators();
+    this.graduatesForm.controls.workSector.updateValueAndValidity();
+    this.graduatesForm.controls.bossMail.clearValidators();
+    this.graduatesForm.controls.bossMail.updateValueAndValidity();
+    this.graduatesForm.controls.workCity.clearValidators();
+    this.graduatesForm.controls.workCity.updateValueAndValidity();
+    this.graduatesForm.controls.salaryRange.clearValidators();
+    this.graduatesForm.controls.salaryRange.updateValueAndValidity();
+    this.graduatesForm.controls.isWork.clearValidators();
+    this.graduatesForm.controls.isWork.updateValueAndValidity();
   }
   
   //Metodo que bloquea las opciones de copia y pegar de un input
