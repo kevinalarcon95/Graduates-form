@@ -10,7 +10,7 @@ import { GraduatesFormData } from 'src/model/GraduatesFormData';
 import { Program } from 'src/model/Program';
 import { WorkingInformation } from 'src/model/WorkingInformation';
 import { Refered } from 'src/model/Refered';
-import { AditionalInformation } from 'src/model/AditionalInformation';
+import { Form } from 'src/model/Form';
 import { Location } from 'src/model/Location';
 import { Boss } from 'src/model/Boss';
 import { Phone } from 'src/model/Phone';
@@ -105,7 +105,7 @@ export class GraduatesFormComponent implements OnInit {
     let job = new WorkingInformation();
     let location = new Location(); 
     let refered = new Refered();
-    let aditionalInformation = new AditionalInformation();
+    let aditionalInformation = new Form();
     let boss = new Boss();
     let phone = new Phone();
     let phonRefe = new Phone();
@@ -144,14 +144,14 @@ export class GraduatesFormComponent implements OnInit {
     location.residenceDepartment = this.graduatesForm.controls.departamentResidence.value;//departamento de residencia
     location.residenceCity = this.graduatesForm.controls.cityResidence.value; // ciudad de residencia
     location.natalDepartment = this.graduatesForm.controls.birthDepartament.value; // departamento de nacimiento
-    location.natalDepartment = this.graduatesForm.controls.placeBirth.value; // ciudad de nacimiento
+    location.natalTown = this.graduatesForm.controls.placeBirth.value; // ciudad de nacimiento
 
     graduatesFormData.location = location;
     
     refered.name = this.graduatesForm.controls.refeName.value;
     refered.email = this.graduatesForm.controls.emailRefe.value;
     phonRefe.type = "Celular";
-    phone.number = this.graduatesForm.controls.cellRefe.value;
+    phonRefe.number = this.graduatesForm.controls.cellRefe.value;
 
     refered.phone = phonRefe;
     graduatesFormData.refered = refered;

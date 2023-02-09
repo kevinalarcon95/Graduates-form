@@ -2,7 +2,7 @@ import { Program } from "./Program";
 import { WorkingInformation } from "./WorkingInformation";
 import { Location } from "./Location";
 import { Refered } from "./Refered";
-import { AditionalInformation } from "./AditionalInformation";
+import { Form } from "./Form";
 
 export class GraduatesFormData {
     id: number;
@@ -12,7 +12,7 @@ export class GraduatesFormData {
     job: WorkingInformation[] = [];
     location: Location;
     refered: Refered;
-    aditionalInformation: AditionalInformation;
+    aditionalInformation: Form;
     idexpeditionLocation: string;
     idexpeditionCountry: string;
     idtype: string;
