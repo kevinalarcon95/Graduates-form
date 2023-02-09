@@ -7,7 +7,11 @@ import Swal from 'sweetalert2'
 
 import { validationNumberIdentification } from '../utils/validations';
 import { GraduatesFormData } from 'src/model/GraduatesFormData';
-
+import { Program } from 'src/model/Program';
+import { WorkingInformation } from 'src/model/WorkingInformation';
+import { Refered } from 'src/model/Refered';
+import { AditionalInformation } from 'src/model/AditionalInformation';
+import { Location } from 'src/model/Location';
 
 @Component({
   selector: 'app-graduates-form',
@@ -51,7 +55,7 @@ export class GraduatesFormComponent implements OnInit {
   }
 
   saveDataGraduatesForm() {
-    if (!this.graduatesForm.valid) {
+    if (this.graduatesForm.valid) {
       console.log('Form ->', this.graduatesForm.value);
       Swal.fire({
         title: 'Confirmar envio de datos',
@@ -95,46 +99,57 @@ export class GraduatesFormComponent implements OnInit {
 
   dataGraduatesForm(): GraduatesFormData {
     let graduatesFormData = new GraduatesFormData();
+    let program = new Program();
+    let job = new WorkingInformation();
+    let location = new Location(); 
+    let refered = new Refered();
+    let aditionalInformation = new AditionalInformation();
+    
 
     graduatesFormData.id = this.graduatesForm.controls.idNumber.value;
     graduatesFormData.childsQuantity = this.graduatesForm.controls.numberChildren.value;
     graduatesFormData.institutionalEmail = this.graduatesForm.controls.personalMail.value;
-    graduatesFormData.programs.code = this.graduatesForm.controls.unicaucaProgram.value;
-    graduatesFormData.programs.name = "INGENIERIA EN SISTEMAS" //traer el dato desde el back enviandole el id;
-    graduatesFormData.job.hadJobBefore = this.graduatesForm.controls.hasWork.value;//¿Ha trabajado antes?
-    graduatesFormData.job.hasBeenInProfession = this.graduatesForm.controls.optionArea.value;//¿Se desempeñó en su área de formación?
-    graduatesFormData.job.working = this.graduatesForm.controls.currentlyWorking.value;//"¿Actualmente está trabajando?
-    graduatesFormData.job.actualPosition = this.graduatesForm.controls.positionCompany.value;
-    graduatesFormData.job.enterprise = this.graduatesForm.controls.companyWork.value;
-    graduatesFormData.job.actualEnterprise = this.graduatesForm.controls.nameCompanyWork.value;
-    graduatesFormData.job.jobCity = this.graduatesForm.controls.workCity.value;
-    graduatesFormData.job.position = this.graduatesForm.controls.bossPositionCompany.value;
-    graduatesFormData.job.salarialRange = this.graduatesForm.controls.salaryRange.value;
-    graduatesFormData.job.contractType = this.graduatesForm.controls.typeContract.value;
-    graduatesFormData.job.boss.name = this.graduatesForm.controls.bossName.value;
-    graduatesFormData.job.boss.email = this.graduatesForm.controls.bossMail.value;
-    graduatesFormData.job.phone.type = "Celular";
-    graduatesFormData.job.phone.number = this.graduatesForm.controls.phoneWork.value;
-    graduatesFormData.job.sector = this.graduatesForm.controls.workSector.value;
-    graduatesFormData.job.inProfession = this.graduatesForm.controls.isWork.value;//¿Se encuentra trabajando en el área de formación?
-    graduatesFormData.location.residenceCountry = this.graduatesForm.controls.countryResidence.value; //pais de residencia
-    graduatesFormData.location.residenceDepartment = this.graduatesForm.controls.departamentResidence.value;//departamento de residencia
-    graduatesFormData.location.residenceCity = this.graduatesForm.controls.cityResidence.value; // ciudad de residencia
-    graduatesFormData.location.natalDepartment = this.graduatesForm.controls.birthDepartament.value; // departamento de nacimiento
-    graduatesFormData.location.natalDepartment = this.graduatesForm.controls.placeBirth.value; // ciudad de nacimiento
-    graduatesFormData.refered.name = this.graduatesForm.controls.refeName.value;
-    graduatesFormData.refered.email = this.graduatesForm.controls.emailRefe.value;
-    graduatesFormData.refered.phone.type = "Celular";
-    graduatesFormData.refered.phone.number = this.graduatesForm.controls.cellRefe.value;
-    graduatesFormData.aditionalInformation.programComment = this.graduatesForm.controls.commentOne.value;
-    graduatesFormData.aditionalInformation.mostImportantProfessor = this.graduatesForm.controls.nameRefeDoc.value;
-    graduatesFormData.aditionalInformation.mostImportantReassons = this.graduatesForm.controls.reasonInfluence.value;
-    graduatesFormData.aditionalInformation.observations = this.graduatesForm.controls.whatReason.value;
-    graduatesFormData.aditionalInformation.universityExpectative = this.graduatesForm.controls.commentTwo.value;
+    program.code = this.graduatesForm.controls.unicaucaProgram.value;
+    program.name = "INGENIERIA EN SISTEMAS" //traer el dato desde el back enviandole el id;
+    job.hadJobBefore = this.graduatesForm.controls.hasWork.value;//¿Ha trabajado antes?
+    job.hasBeenInProfession = this.graduatesForm.controls.optionArea.value;//¿Se desempeñó en su área de formación?
+    job.working = this.graduatesForm.controls.currentlyWorking.value;//"¿Actualmente está trabajando?
+    job.actualPosition = this.graduatesForm.controls.positionCompany.value;
+    job.enterprise = this.graduatesForm.controls.companyWork.value;
+    job.actualEnterprise = this.graduatesForm.controls.nameCompanyWork.value;
+    job.jobCity = this.graduatesForm.controls.workCity.value;
+    job.position = this.graduatesForm.controls.bossPositionCompany.value;
+    job.salarialRange = this.graduatesForm.controls.salaryRange.value;
+    job.contractType = this.graduatesForm.controls.typeContract.value;
+    job.boss.name = this.graduatesForm.controls.bossName.value;
+    job.boss.email = this.graduatesForm.controls.bossMail.value;
+    job.phone.type = "Celular";
+    job.phone.number = this.graduatesForm.controls.phoneWork.value;
+    job.sector = this.graduatesForm.controls.workSector.value;
+    job.inProfession = this.graduatesForm.controls.isWork.value;//¿Se encuentra trabajando en el área de formación?
+    location.residenceCountry = this.graduatesForm.controls.countryResidence.value; //pais de residencia
+    location.residenceDepartment = this.graduatesForm.controls.departamentResidence.value;//departamento de residencia
+    location.residenceCity = this.graduatesForm.controls.cityResidence.value; // ciudad de residencia
+    location.natalDepartment = this.graduatesForm.controls.birthDepartament.value; // departamento de nacimiento
+    location.natalDepartment = this.graduatesForm.controls.placeBirth.value; // ciudad de nacimiento
+    refered.name = this.graduatesForm.controls.refeName.value;
+    refered.email = this.graduatesForm.controls.emailRefe.value;
+    refered.phone.type = "Celular";
+    refered.phone.number = this.graduatesForm.controls.cellRefe.value;
+    aditionalInformation.programComment = this.graduatesForm.controls.commentOne.value;
+    aditionalInformation.mostImportantProfessor = this.graduatesForm.controls.nameRefeDoc.value;
+    aditionalInformation.mostImportantReassons = this.graduatesForm.controls.reasonInfluence.value;
+    aditionalInformation.observations = this.graduatesForm.controls.whatReason.value;
+    aditionalInformation.universityExpectative = this.graduatesForm.controls.commentTwo.value;
     graduatesFormData.idexpeditionCountry = this.graduatesForm.controls.expeditionDepartament.value;
     graduatesFormData.idexpeditionLocation = this.graduatesForm.controls.expeditionPlace.value;
     graduatesFormData.idtype = this.graduatesForm.controls.idType.value;
-  
+
+    graduatesFormData.programs.push(program);
+    graduatesFormData.job.push(job);
+    graduatesFormData.location = location;
+    graduatesFormData.refered = refered;
+    graduatesFormData.aditionalInformation = aditionalInformation;
 
     //graduates.degreeDate = this.graduatesForm.controls.degreeDate.value;    
     return graduatesFormData;

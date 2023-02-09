@@ -1,16 +1,9 @@
 export class Program{
-    private _code: string;
-    public get code(): string {
-        return this._code;
+    code: string;
+    name: string;
+
+    public constructor(partil?: Partial<Program>) {
+        Object.assign(this, partil);
     }
-    public set code(value: string) {
-        this._code = value;
-    }
-    private _name: string;
-    public get name(): string {
-        return this._name;
-    }
-    public set name(value: string) {
-        this._name = value;
-    }
+
 }
