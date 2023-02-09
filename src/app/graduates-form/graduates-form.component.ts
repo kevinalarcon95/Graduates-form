@@ -105,7 +105,7 @@ export class GraduatesFormComponent implements OnInit {
     let job = new WorkingInformation();
     let location = new Location(); 
     let refered = new Refered();
-    let aditionalInformation = new Form();
+    let form = new Form();
     let boss = new Boss();
     let phone = new Phone();
     let phonRefe = new Phone();
@@ -156,13 +156,13 @@ export class GraduatesFormComponent implements OnInit {
     refered.phone = phonRefe;
     graduatesFormData.refered = refered;
   
-    aditionalInformation.programComment = this.graduatesForm.controls.commentOne.value;
-    aditionalInformation.mostImportantProfessor = this.graduatesForm.controls.nameRefeDoc.value;
-    aditionalInformation.mostImportantReassons = this.graduatesForm.controls.reasonInfluence.value;
-    aditionalInformation.observations = this.graduatesForm.controls.whatReason.value;
-    aditionalInformation.universityExpectative = this.graduatesForm.controls.commentTwo.value;
+    form.programComment = this.graduatesForm.controls.commentOne.value;
+    form.mostImportantProfessor = this.graduatesForm.controls.nameRefeDoc.value;
+    form.mostImportantReassons = this.graduatesForm.controls.reasonInfluence.value;
+    form.observations = this.graduatesForm.controls.whatReason.value;
+    form.universityExpectative = this.graduatesForm.controls.commentTwo.value;
 
-    graduatesFormData.aditionalInformation = aditionalInformation;
+    graduatesFormData.form = form;
     
     graduatesFormData.idexpeditionCountry = this.graduatesForm.controls.expeditionDepartament.value;
     graduatesFormData.idexpeditionLocation = this.graduatesForm.controls.expeditionPlace.value;

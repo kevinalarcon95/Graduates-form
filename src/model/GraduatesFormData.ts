@@ -12,7 +12,7 @@ export class GraduatesFormData {
     job: WorkingInformation[] = [];
     location: Location;
     refered: Refered;
-    aditionalInformation: Form;
+    form: Form;
     idexpeditionLocation: string;
     idexpeditionCountry: string;
     idtype: string;
