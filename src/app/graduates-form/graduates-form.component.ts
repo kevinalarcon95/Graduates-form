@@ -111,14 +111,14 @@ export class GraduatesFormComponent implements OnInit {
     let phonRefe = new Phone();
   
     graduatesFormData.id = this.graduatesForm.controls.idNumber.value;
-    graduatesFormData.childsQuantity = this.graduatesForm.controls.numberChildren.value;
+    graduatesFormData.childsQuantity = Number(this.graduatesForm.controls.numberChildren.value);
     graduatesFormData.institutionalEmail = this.graduatesForm.controls.personalMail.value;
     program.code = this.graduatesForm.controls.unicaucaProgram.value;
     program.name = "INGENIERIA EN SISTEMAS" //traer el dato desde el back enviandole el id;
 
-    job.hadJobBefore = this.graduatesForm.controls.hasWork.value;//¿Ha trabajado antes?
-    job.hasBeenInProfession = this.graduatesForm.controls.optionArea.value;//¿Se desempeñó en su área de formación?
-    job.working = this.graduatesForm.controls.currentlyWorking.value;//"¿Actualmente está trabajando?
+    job.hadJobBefore = Boolean(this.graduatesForm.controls.hasWork.value);//¿Ha trabajado antes?
+    job.hasBeenInProfession = Boolean(this.graduatesForm.controls.optionArea.value);//¿Se desempeñó en su área de formación?
+    job.working = Boolean(this.graduatesForm.controls.currentlyWorking.value);//"¿Actualmente está trabajando?
     job.actualPosition = this.graduatesForm.controls.positionCompany.value;
     job.enterprise = this.graduatesForm.controls.companyWork.value;
     job.actualEnterprise = this.graduatesForm.controls.nameCompanyWork.value;
@@ -136,7 +136,7 @@ export class GraduatesFormComponent implements OnInit {
     
     job.phone = phone;
     job.sector = this.graduatesForm.controls.workSector.value;
-    job.inProfession = this.graduatesForm.controls.isWork.value;//¿Se encuentra trabajando en el área de formación?
+    job.inProfession = Boolean(this.graduatesForm.controls.isWork.value);//¿Se encuentra trabajando en el área de formación?
 
     graduatesFormData.job.push(job);
 
