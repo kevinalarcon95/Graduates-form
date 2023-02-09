@@ -8,8 +8,8 @@ export class GraduatesFormData {
     id: number;
     childsQuantity: number;
     institutionalEmail: string;
-    programs: Program[];
-    job: WorkingInformation[];
+    programs: Program[] = [];
+    job: WorkingInformation[] = [];
     location: Location;
     refered: Refered;
     aditionalInformation: AditionalInformation;
