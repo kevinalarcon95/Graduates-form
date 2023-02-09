@@ -13,6 +13,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "lodash"
+           ],
             "outputPath": "dist/graduates-form",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -37,10 +40,7 @@
               "node_modules/@popperjs/core/dist/umd/popper.min.js",
               "sweetalert2/dist/sweetalert2.all.min.js"
 
-            ],
-            "allowedCommonJsDependencies": [
-              "lodash"
-           ]
+            ]
           },
           "configurations": {
             "production": {

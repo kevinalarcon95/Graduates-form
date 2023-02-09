@@ -1,5 +1,7 @@
 export class GraduatesForm{
 
+      
+
       degreeDate: string;
       idType: string;
       idNumber: number;
