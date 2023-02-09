@@ -12,6 +12,8 @@ import { WorkingInformation } from 'src/model/WorkingInformation';
 import { Refered } from 'src/model/Refered';
 import { AditionalInformation } from 'src/model/AditionalInformation';
 import { Location } from 'src/model/Location';
+import { Boss } from 'src/model/Boss';
+import { Phone } from 'src/model/Phone';
 
 @Component({
   selector: 'app-graduates-form',
@@ -104,16 +106,16 @@ export class GraduatesFormComponent implements OnInit {
     let location = new Location(); 
     let refered = new Refered();
     let aditionalInformation = new AditionalInformation();
-    
-
+    let boss = new Boss();
+    let phone = new Phone();
+    let phonRefe = new Phone();
+  
     graduatesFormData.id = this.graduatesForm.controls.idNumber.value;
     graduatesFormData.childsQuantity = this.graduatesForm.controls.numberChildren.value;
     graduatesFormData.institutionalEmail = this.graduatesForm.controls.personalMail.value;
     program.code = this.graduatesForm.controls.unicaucaProgram.value;
     program.name = "INGENIERIA EN SISTEMAS" //traer el dato desde el back enviandole el id;
 
-    
-    
     job.hadJobBefore = this.graduatesForm.controls.hasWork.value;//¿Ha trabajado antes?
     job.hasBeenInProfession = this.graduatesForm.controls.optionArea.value;//¿Se desempeñó en su área de formación?
     job.working = this.graduatesForm.controls.currentlyWorking.value;//"¿Actualmente está trabajando?
@@ -124,10 +126,15 @@ export class GraduatesFormComponent implements OnInit {
     job.position = this.graduatesForm.controls.bossPositionCompany.value;
     job.salarialRange = this.graduatesForm.controls.salaryRange.value;
     job.contractType = this.graduatesForm.controls.typeContract.value;
-    job.boss.name = this.graduatesForm.controls.bossName.value;
-    job.boss.email = this.graduatesForm.controls.bossMail.value;
-    job.phone.type = "Celular";
-    job.phone.number = this.graduatesForm.controls.phoneWork.value;
+
+    boss.name = this.graduatesForm.controls.bossName.value;
+    boss.email = this.graduatesForm.controls.bossMail.value;
+    
+    job.boss = boss;
+    phone.type = "Celular";
+    phone.number = this.graduatesForm.controls.phoneWork.value;
+    
+    job.phone = phone;
     job.sector = this.graduatesForm.controls.workSector.value;
     job.inProfession = this.graduatesForm.controls.isWork.value;//¿Se encuentra trabajando en el área de formación?
 
@@ -143,11 +150,12 @@ export class GraduatesFormComponent implements OnInit {
     
     refered.name = this.graduatesForm.controls.refeName.value;
     refered.email = this.graduatesForm.controls.emailRefe.value;
-    refered.phone.type = "Celular";
-    refered.phone.number = this.graduatesForm.controls.cellRefe.value;
+    phonRefe.type = "Celular";
+    phone.number = this.graduatesForm.controls.cellRefe.value;
 
+    refered.phone = phonRefe;
     graduatesFormData.refered = refered;
-    
+  
     aditionalInformation.programComment = this.graduatesForm.controls.commentOne.value;
     aditionalInformation.mostImportantProfessor = this.graduatesForm.controls.nameRefeDoc.value;
     aditionalInformation.mostImportantReassons = this.graduatesForm.controls.reasonInfluence.value;
