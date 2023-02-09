@@ -3,14 +3,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ServiceService } from '../service/service.service';
 import { Router } from '@angular/router';
 import { Country, State, City }  from 'country-state-city';
-//import 'sweetalert2/src/sweetalert2.scss';
 import Swal from 'sweetalert2'
 
 import { validationNumberIdentification } from '../utils/validations';
-import { GraduatesForm } from 'src/model/GraduatesForm';
 import { GraduatesFormData } from 'src/model/GraduatesFormData';
-import { Program } from 'src/model/Program';
-import { WorkingInformation } from 'src/model/WorkingInformation';
 
 
 @Component({
@@ -55,7 +51,7 @@ export class GraduatesFormComponent implements OnInit {
   }
 
   saveDataGraduatesForm() {
-    if (this.graduatesForm.valid) {
+    if (!this.graduatesForm.valid) {
       console.log('Form ->', this.graduatesForm.value);
       Swal.fire({
         title: 'Confirmar envio de datos',
