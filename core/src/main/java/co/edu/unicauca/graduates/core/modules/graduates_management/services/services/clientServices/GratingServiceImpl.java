@@ -1,7 +1,9 @@
 
 package co.edu.unicauca.graduates.core.modules.graduates_management.services.services.clientServices;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
@@ -63,9 +65,11 @@ public class GratingServiceImpl implements IGratingService{
 					+ graduated.getId()+" existe en la Base De Datos.");
 			throw objExcepcion;
 		}
-
+		LocalDate date = LocalDate.now();
 		GratingEntity objGratingEntity = this.modelMapper.map(graduated, GratingEntity.class);
 		validateForm(objGratingEntity.getForm());
+		objGratingEntity.setCreateAt(date);
+		objGratingEntity.setUpdateAt(date);
 		objGratingEntity.getForm().setGrating(objGratingEntity);
 		objGratingEntity.getLocation().setGrating(objGratingEntity);
 		objGratingEntity.getRefered().setGrating(objGratingEntity);
