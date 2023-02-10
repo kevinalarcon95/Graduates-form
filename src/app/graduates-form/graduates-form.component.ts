@@ -230,7 +230,7 @@ export class GraduatesFormComponent implements OnInit {
   
   //Limpia el formulario
   onResetForm() {
-    //this.graduatesForm.reset();
+    this.graduatesForm.reset();
   }
 
   /*
