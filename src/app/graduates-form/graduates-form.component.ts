@@ -45,7 +45,6 @@ export class GraduatesFormComponent implements OnInit {
   inputState: boolean = false;
   today = new Date();
   year = this.today.getFullYear();
-  
 
   constructor(private formBuilder: FormBuilder, private service: ServiceService, private router: Router) {}
 
@@ -443,7 +442,8 @@ export class GraduatesFormComponent implements OnInit {
   }
 
   loadProgram(event){
-    this.service.getProgram(Number(this.graduatesForm.controls.unicaucaProgram.value)+1)
+    let facultySelected = Number(this.graduatesForm.controls.unicaucaProgram.value);
+    this.service.getProgram(facultySelected)
     .subscribe(resp => {
       this.arrayPrograms = [...resp];
       console.log(this.arrayPrograms);
