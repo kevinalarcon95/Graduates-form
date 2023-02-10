@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { GraduatesFormData } from 'src/model/GraduatesFormData';
-import { ReqResponse } from 'src/model/ReqResponse';
+import { Faculty } from 'src/model/Faculty';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 //imkportar el modelo
 
 @Injectable({
@@ -17,14 +18,10 @@ export class ServiceService {
     return this.http.post<GraduatesFormData>(url, graduates);
   }
 
-  getFaculties(){
+  getFaculties(): Observable<Faculty[]> {
+
     let url = "http://localhost:8080/api/facultad";
-    return this.http.get<ReqResponse>(url)
-    .pipe(
-      map(resp =>{
-        return resp.faculties.map(faculty => faculty);
-      })
-    )
+    return this.http.get<Faculty[]>(url);
   }
   
 }

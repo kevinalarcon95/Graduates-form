@@ -1,9 +1,9 @@
-export class Faculty{
+export interface Faculty{
     id: number;
     name: string;
 
-    public constructor(partil?: Partial<Faculty>) {
-        Object.assign(this, partil);
-      }
+    // public constructor(partil?: Partial<Faculty>) {
+    //     Object.assign(this, partil);
+    //   }
 }
 

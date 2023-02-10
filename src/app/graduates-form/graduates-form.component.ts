@@ -36,7 +36,7 @@ export class GraduatesFormComponent implements OnInit {
   arrayCities = [];
   arrayCitiesCol = [];
   arrayCitiesCol2 = [];
-  arrayFaculties = [];
+  arrayFaculties : Faculty[] = [];
   isClicked: boolean = false;
   element: boolean = false;
   element2: boolean = false;
@@ -435,8 +435,8 @@ export class GraduatesFormComponent implements OnInit {
 
   loadFaculties(){
     this.service.getFaculties()
-    .subscribe(faculty => {
-      this.arrayFaculties = faculty;
+    .subscribe(resp => {
+      this.arrayFaculties = [...resp];
       console.log(this.arrayFaculties);
     });
   }
