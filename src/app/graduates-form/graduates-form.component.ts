@@ -435,10 +435,7 @@ export class GraduatesFormComponent implements OnInit {
   loadFaculties(){
     this.service.getFaculties()
     .subscribe(resp => {
-      for(var i=0; i< resp.faculties.length; i++){
-        let faculty = { id: resp[i].id, isoCode: resp[i].name };
-        this.arrayFaculties.push(faculty);
-      }
+      this.arrayFaculties = resp.faculties;
       console.log(this.arrayFaculties);
     });
   }

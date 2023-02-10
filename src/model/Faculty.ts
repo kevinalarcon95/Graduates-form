@@ -1,20 +1,8 @@
-export class Faculty{
-    faculties: RespFaculty[] = [];
-
-    constructor(
-        partil?: Partial<Faculty>
-    ){
-        Object.assign(this, partil);
-    }
+export interface Faculty{
+    faculties: RespFaculty[];
 }
 
-export class RespFaculty{
+export interface RespFaculty{
     id: number;
     name: string;
-
-    constructor(
-        partil?: Partial<RespFaculty>
-    ){
-        Object.assign(this, partil);
-    }
 }
