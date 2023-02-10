@@ -1,2 +1,0 @@
-INSERT INTO `programa` (`id`, `nombre`,`direccion`, `sede`, `nit`) VALUES (1,'Ingeniería De Sistemas','Cra. 2 #4N-140', 'Popayan','891500319-2');
-INSERT INTO `programa` (`id`, `nombre`,`direccion`, `sede`, `nit`) VALUES (2,'Fisioterapia','Carrera 5 # 13N – 36', 'Popayan','8558221-9');
