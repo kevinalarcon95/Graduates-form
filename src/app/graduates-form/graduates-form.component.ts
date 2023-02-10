@@ -51,9 +51,7 @@ export class GraduatesFormComponent implements OnInit {
     this.blockCopyAndPaste()
     this.loadCountries();
     this.loadDepartamentCol();
-    
-
-    
+    this.loadFaculties();    
   }
 
   saveDataGraduatesForm() {
@@ -431,6 +429,13 @@ export class GraduatesFormComponent implements OnInit {
       this.graduatesForm.controls.whatReason.setValue("");
       this.graduatesForm.controls.whatReason.disable();
     }
+  }
+
+  loadFaculties(){
+    this.service.getFaculties()
+    .subscribe(resp => {
+      console.log(resp);
+    });
   }
 
 }
