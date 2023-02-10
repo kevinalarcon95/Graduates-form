@@ -211,7 +211,7 @@
           </div>
           <div class="col-4">
               <div class="mb-1">
-                  <select class="form-select mb-3" formControlName="unicaucaFaculty" aria-label="Default select example">
+                  <select class="form-select mb-3" formControlName="unicaucaFaculty" aria-label="Default select example" (change)="loadProgram($event)">
                       <option value="" selected hidden>Facultad</option>
                       <option *ngFor="let obj of arrayFaculties" [value]="obj.id" selected>
                         {{ obj.name }}
