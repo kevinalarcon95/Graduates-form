@@ -25,7 +25,7 @@ export class ServiceService {
   }
 
   getProgram(idFaculty: number): Observable<Program[]> {
-    let url = "http://localhost:8080/api/programas/+idFaculty+";
+    let url = "http://localhost:8080/api/programas/"+idFaculty+"";
     return this.http.get<Program[]>(url);
   }
 }
