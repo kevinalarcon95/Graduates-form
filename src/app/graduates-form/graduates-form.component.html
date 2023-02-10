@@ -213,9 +213,9 @@
               <div class="mb-1">
                   <select class="form-select mb-3" formControlName="unicaucaFaculty" aria-label="Default select example">
                       <option value="" selected hidden>Facultad</option>
-                      <option value="1">FIET</option>
-                      <option value="2">FACA</option>
-                      <option value="3">SALUD</option>
+                      <option *ngFor="let obj of arrayFaculties" [value]="obj.id" selected>
+                        {{ obj.name }}
+                    </option>
                   </select>
               </div>
               <div *ngIf="graduatesForm.get('unicaucaFaculty')?.errors?.['required'] && graduatesForm.get('unicaucaFaculty')?.touched" class="alert alert-danger">
