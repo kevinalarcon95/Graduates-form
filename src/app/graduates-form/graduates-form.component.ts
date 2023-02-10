@@ -436,6 +436,8 @@ export class GraduatesFormComponent implements OnInit {
     this.service.getFaculties()
     .subscribe(resp => {
       this.arrayFaculties = resp.faculties; 
+      console.log(this.arrayFaculties);
+
     });
   }
 
