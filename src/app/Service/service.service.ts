@@ -13,7 +13,14 @@ export class ServiceService {
   url="http://localhost:8080/api/graduandos"; //conexion con el backend
   
   saveGraduatesForm(graduates: GraduatesFormData) {
+    let url="http://localhost:8080/api/graduandos";
     return this.http.post<GraduatesFormData>(this.url, graduates);
+  }
+
+  getFaculties(){
+    let url = "localhost:8080/api/facultad";
+    return this.http.get(url);
+
   }
   
 }
