@@ -4,6 +4,7 @@ import { GraduatesFormData } from 'src/model/GraduatesFormData';
 import { Faculty } from 'src/model/Faculty';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { Program } from 'src/model/Program';
 //imkportar el modelo
 
 @Injectable({
@@ -19,9 +20,12 @@ export class ServiceService {
   }
 
   getFaculties(): Observable<Faculty[]> {
-
     let url = "http://localhost:8080/api/facultad";
     return this.http.get<Faculty[]>(url);
   }
-  
+
+  getProgram(idFaculty: number): Observable<Program[]> {
+    let url = "http://localhost:8080/api/programas/+idFaculty+";
+    return this.http.get<Program[]>(url);
+  }
 }

@@ -37,6 +37,7 @@ export class GraduatesFormComponent implements OnInit {
   arrayCitiesCol = [];
   arrayCitiesCol2 = [];
   arrayFaculties : Faculty[] = [];
+  arrayPrograms: Program[] = [];
   isClicked: boolean = false;
   element: boolean = false;
   element2: boolean = false;
@@ -438,6 +439,14 @@ export class GraduatesFormComponent implements OnInit {
     .subscribe(resp => {
       this.arrayFaculties = [...resp];
       console.log(this.arrayFaculties);
+    });
+  }
+
+  loadProgram(){
+    this.service.getProgram(Number(this.graduatesForm.controls.unicaucaProgram.value))
+    .subscribe(resp => {
+      this.arrayPrograms = [...resp];
+      console.log(this.arrayPrograms);
     });
   }
 
