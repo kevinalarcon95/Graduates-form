@@ -109,8 +109,10 @@ export class GraduatesFormComponent implements OnInit {
     let boss = new Boss();
     let phone = new Phone();
     let phonRefe = new Phone();
-  
+    
+
     graduatesFormData.id = this.graduatesForm.controls.idNumber.value;
+    graduatesFormData.degreeDate  = this.graduatesForm.controls.degreeDate.value; 
     graduatesFormData.childsQuantity = Number(this.graduatesForm.controls.numberChildren.value);
     graduatesFormData.institutionalEmail = this.graduatesForm.controls.personalMail.value;
     program.code = this.graduatesForm.controls.unicaucaProgram.value;
@@ -169,9 +171,7 @@ export class GraduatesFormComponent implements OnInit {
     graduatesFormData.idtype = this.graduatesForm.controls.idType.value;
 
     graduatesFormData.programs.push(program);
-  
 
-    //graduates.degreeDate = this.graduatesForm.controls.degreeDate.value;    
     return graduatesFormData;
   }
   

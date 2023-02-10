@@ -6,6 +6,7 @@ import { Form } from "./Form";
 
 export class GraduatesFormData {
     id: number;
+    degreeDate: string;
     childsQuantity: number;
     institutionalEmail: string;
     programs: Program[] = [];
