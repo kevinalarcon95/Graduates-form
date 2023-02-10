@@ -14,6 +14,7 @@ import { Form } from 'src/model/Form';
 import { Location } from 'src/model/Location';
 import { Boss } from 'src/model/Boss';
 import { Phone } from 'src/model/Phone';
+import { Faculty } from 'src/model/Faculty';
 
 @Component({
   selector: 'app-graduates-form',
@@ -434,8 +435,8 @@ export class GraduatesFormComponent implements OnInit {
 
   loadFaculties(){
     this.service.getFaculties()
-    .subscribe(resp => {
-      this.arrayFaculties = resp.faculties;
+    .subscribe(faculty => {
+      this.arrayFaculties = faculty;
       console.log(this.arrayFaculties);
     });
   }
