@@ -17,7 +17,7 @@ import co.edu.unicauca.graduates.core.shared.model.dto.ProgramDTO;
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(origins = "http://localhost:4200")
-public class DepartamentRestController {
+public class ProgramRestController {
     @Autowired
     private IProgramService facultadServicio;
 

@@ -5,11 +5,19 @@ INSERT INTO `Headquarters` (`hdq_id`, `hdq_name`, `university_nit`,`createAt`,`u
 
 INSERT INTO `Faculties` (`fac_id`, `fac_name`,`fac_address`, `headquarter_id`,`createAt`,`updateAt`) VALUES (null,'Facultad de Artes','Cra. 6 #173, Centro, Popayán, Cauca',1,now(),now());
 INSERT INTO `Faculties` (`fac_id`, `fac_name`,`fac_address`, `headquarter_id`,`createAt`,`updateAt`) VALUES (null,'Facultad de Ingeniería Electrónica y Telecomunicaciones','Cra. 2 #4N-140, Popayán, Cauca',1,now(),now());
+INSERT INTO `faculties` (`fac_id`, `fac_address`, `createAt`, `fac_degreeDate`, `fac_name`, `updateAt`, `headquarter_id`) VALUES (null, 'Carrera 6 N° 13 N 50 Sector la Estancia', '2023-01-03 02:23:18', NULL, 'Facultad de Ciencias de la Salud', '2023-02-08', '1');
+INSERT INTO `Faculties` (`fac_id`, `fac_name`,`fac_address`, `headquarter_id`,`createAt`,`updateAt`) VALUES (null,'Facultad de Ingeniería Civil','Cra. 2 #4N-140, Popayán, Cauca',1,now(),now());
 
 INSERT INTO `Departments` (`dep_id`, `dep_name`, `faculty_id`,`createAt`,`updateAt`) VALUES (null,'Ingeniería De Sistemas',2,now(),now());
+INSERT INTO `Departments` (`dep_id`, `dep_name`, `faculty_id`,`createAt`,`updateAt`) VALUES (null,'Enfermeria',3,now(),now());
+INSERT INTO `Departments` (`dep_id`, `dep_name`, `faculty_id`,`createAt`,`updateAt`) VALUES (null,'Civil',4,now(),now());
+INSERT INTO `Departments` (`dep_id`, `dep_name`, `faculty_id`,`createAt`,`updateAt`) VALUES (null,'Artes',1,now(),now());
 
 INSERT INTO `Programs` (`prog_cod`, `prog_name`, `dep_id`,`createAt`,`updateAt`,`prog_type`) VALUES (1,'Ingeniería De Sistemas',1,now(),now(),'DEGREE');
 INSERT INTO `Programs` (`prog_cod`, `prog_name`, `dep_id`,`createAt`,`updateAt`,`prog_type`) VALUES (2,'Especializacion en Ciencia de Datos',1,now(),now(),'DEGREE');
+INSERT INTO `Programs` (`prog_cod`, `prog_name`, `dep_id`,`createAt`,`updateAt`,`prog_type`) VALUES (3,'ENFERMERÍA',2,now(),now(),'DEGREE');
+INSERT INTO `Programs` (`prog_cod`, `prog_name`, `dep_id`,`createAt`,`updateAt`,`prog_type`) VALUES (4,'Arquitectura',3,now(),now(),'DEGREE');
+INSERT INTO `Programs` (`prog_cod`, `prog_name`, `dep_id`,`createAt`,`updateAt`,`prog_type`) VALUES (5,'Artes Plásticas',4,now(),now(),'DEGREE');
 
 --INSERT INTO `Degrees` (`deg_id`, `deg_name`, `deg_mention`, `deg_type`, `prog_cod`,`createAt`,`updateAt`) VALUES (null,'Ingeniero de Sistemas','si','UDERGRATUATE','1',now(),now());
 

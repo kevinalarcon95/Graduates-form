@@ -38,6 +38,8 @@ public class GratingEntity{
     private String institutionalEmail;
     @Column(name = "grat_childsQuantity")
 	private Integer childsQuantity;
+	@Column(name = "grat_degreeDate")
+	private String degreeDate;
 	@DateTimeFormat(pattern = "yyyy/mm/dd HH:mm:ss")
     private LocalDate createAt;
     @DateTimeFormat(pattern = "yyyy/mm/dd HH:mm:ss")
