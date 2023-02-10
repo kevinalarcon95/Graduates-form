@@ -442,7 +442,7 @@ export class GraduatesFormComponent implements OnInit {
     });
   }
 
-  loadProgram(){
+  loadProgram(event){
     this.service.getProgram(Number(this.graduatesForm.controls.unicaucaProgram.value))
     .subscribe(resp => {
       this.arrayPrograms = [...resp];
