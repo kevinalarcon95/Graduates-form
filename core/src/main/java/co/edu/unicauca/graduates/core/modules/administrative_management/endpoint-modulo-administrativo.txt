@@ -1,0 +1,47 @@
+1. CREAR USUARIO
+POST: http://localhost:8080/api/users
+BODY: 
+{
+  "id": 1061987655,
+  "name": "Eduardo",
+  "lastName": "Gómez",
+  "email": "juan@unicauca.edu.co",
+  "createAt": "2023-01-29",
+  "updateAt": "2023-01-29",
+  "status":true,
+  "password":"123",
+  "listRoles": [
+    "GRADUATED",
+    "STATISTICS",
+    "POLL",
+    "ADMIN"
+  ]
+}
+
+2. LISTAR USUARIOS
+GET: http://localhost:8080/api/users
+
+3. LISTAR USUARIO POR ID
+GET: http://localhost:8080/api/users/1061987654
+
+4. ACTUALIZAR USUARIO (ESTADO)
+PUT: http://localhost:8080/api/users/1061987654
+BODY:
+{
+  "id": 1061987654,
+  "name": "Eduardo2",
+  "lastName": "Góme2z",
+  "email": "juan2@unicauca.edu.co",
+  "createAt": "2023-01-29",
+  "updateAt": "2023-01-29",
+  "status":false,
+  "password":"1234",
+  "listRoles": [
+    "GRADUATED",
+    "STATISTICS",
+    "ADMIN"
+  ]
+}
+
+5. ELIMINAR USUARIO 
+DELETE: http://localhost:8080/api/users/1061987656
