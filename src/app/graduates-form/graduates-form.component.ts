@@ -442,12 +442,11 @@ export class GraduatesFormComponent implements OnInit {
   }
 
   loadProgram(event){
-    let facultySelected = Number(this.graduatesForm.controls.unicaucaProgram.value);
+    let facultySelected = this.graduatesForm.controls.unicaucaFaculty.value;
     this.service.getProgram(facultySelected)
     .subscribe(resp => {
       this.arrayPrograms = [...resp];
       console.log(this.arrayPrograms);
     });
   }
-
 }
