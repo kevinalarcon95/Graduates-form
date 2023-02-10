@@ -58,7 +58,6 @@ export class GraduatesFormComponent implements OnInit {
 
   saveDataGraduatesForm() {
     if (this.graduatesForm.valid) {
-      console.log('Form ->', this.graduatesForm.value);
       Swal.fire({
         title: 'Confirmar envio de datos',
         text:  '¿Estas seguro que deseas enviar el formulario?',
@@ -437,7 +436,6 @@ export class GraduatesFormComponent implements OnInit {
     this.service.getFaculties()
     .subscribe(resp => {
       this.arrayFaculties = [...resp];
-      console.log(this.arrayFaculties);
     });
   }
 
@@ -446,7 +444,6 @@ export class GraduatesFormComponent implements OnInit {
     this.service.getProgram(facultySelected)
     .subscribe(resp => {
       this.arrayPrograms = [...resp];
-      console.log(this.arrayPrograms);
     });
   }
 }
